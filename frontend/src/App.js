@@ -1,10 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
+import Allitemspage from './pages/Product Page/Allitemspage';
+import Catogarybar from './pages/Product Page/Catogarybar';
 
 function App() {
   return (
     <div className="App">
-      Home
+    <Catogarybar/>
+    <Allitemspage/>
     </div>
   );
 }
