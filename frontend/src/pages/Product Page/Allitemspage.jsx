@@ -1,14 +1,16 @@
-import { Box, Button, Checkbox, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Container, Flex, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import ratingicon from "../../Assets/ratingicon.png";
 import wishlisttrue from "../../Assets/wishlisttrue.png";
 import wishlistfalse from "../../Assets/wishlistfalse.png";
+import Sortingbar from "./sortingbar";
+import Filters from "./Filters";
 
 const Allitemspage = () => {
   let data = {
     img: "https://www.reliancedigital.in/medias/Lenovo-8506X-Regular-Tablets-492849048-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w3MDEwNHxpbWFnZS9qcGVnfGltYWdlcy9oNGYvaDlhLzk3ODI2NTE2MTczMTAuanBnfDQ2NGE4NGI1YjhmZWFkZTE1YThiYzE2YjcyZDBlODQ4MTk4M2Y2NmE2ZGMyOWNiN2EzZmU3ZmNkM2YzM2MyYjQ",
     dis: "Lenovo Tab M8 3rd Gen 20.32 cm (8 inch) LTE Tablet 4 GB RAM, 64 GB, Iron Grey, ZA8G0000IN",
-    rating: 4,
+    rating: 5,
     priceafterdiscount: 13999,
     pricebeforeiscount: 20000,
     discount: "30%(₹6,011)",
@@ -18,8 +20,12 @@ const Allitemspage = () => {
   console.log(val);
 
   return (
-    <Box>
-      <Box boxShadow='base' h="432" w={"291px"} p={"15px"}>
+    <Box >
+    <Flex bg={"#f5f7f7"}>
+    <Filters/>
+    <Container  maxW={"100%"} >
+    <Sortingbar/>
+      <Box bg={"#ffffff"} boxShadow="base" h="432" w={"291px"} p={"15px"}>
         <Box h={"210px"} w={"265px"}>
           <Image
             h={"210px"}
@@ -56,19 +62,19 @@ const Allitemspage = () => {
           >
             {" "}
             <Box w={"100%"}>
-            <Text fontSize={"10px"} color="#31812e">
-              {" "}
-              OFFERS AVAILABILE{" "}
-            </Text>{" "}
+              <Text fontSize={"10px"} color="#31812e">
+                {" "}
+                OFFERS AVAILABILE{" "}
+              </Text>{" "}
             </Box>
           </Box>
         </Box>
         <Box borderStyle={"groove"} color={"#666666"} display={"flex"}>
-          <Button w={"50%"} boxShadow='base'  colorScheme={"#ffffff"}>
+          <Button w={"50%"} boxShadow="base" colorScheme={"#ffffff"}>
             <Checkbox pr={"5px"}></Checkbox>{" "}
             <Text color={"#666666"}> Compare</Text>
           </Button>
-          <Button boxShadow='base' w={"50%"} colorScheme={"#ffffff"}>
+          <Button boxShadow="base" w={"50%"} colorScheme={"#ffffff"}>
             {" "}
             <Image
               src={!!data.wishlist ? wishlisttrue : wishlistfalse}
@@ -81,6 +87,9 @@ const Allitemspage = () => {
           </Button>
         </Box>
       </Box>
+    </Container>
+    </Flex>
+    
     </Box>
   );
 };
