@@ -1,0 +1,135 @@
+.dev{
+    display: flex;
+    margin: auto;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #e5e5e5;
+    
+}
+.boat{
+  margin: auto;
+ 
+}
+.boat>h3{
+  text-align: start;
+  color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2em;
+    font-family: Roboto,"system-ui",sans-serif;
+    margin-top: 20px;
+    padding: 0;
+}
+.qimg{
+    margin: auto;
+    
+    
+    width: 50%;
+}
+
+ul {
+    
+    text-align: start;
+ 
+}
+li{
+    line-height: 23px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.qoffers2{
+    margin-top: 10px;
+}
+.qoffers2>h4{
+    text-align: start;
+    font-weight: bold;
+    line-height: 30px;
+
+}
+.qoffers{
+    width: 50%;
+    border-right: 1px solid #e5e5e5;
+    
+}
+.optimum>li{
+    font-size: 15px;
+    color: rgb(88, 87, 87);;
+    width: 98%;
+}
+p{
+    color:blue;
+    text-align: start;
+    font-size: 14px;
+}
+b{
+    color: blue;
+}
+.hene{
+    color: black;
+    font-weight: bold;
+    background-color: #f5f7f7;
+}
+.tr{
+    gap:10px
+}
+.pdp__offerPrice{
+    color: #003380;
+    font-size: 25px;
+    font-weight: 600;
+}
+.rajawat_p{
+    margin-top: 10px;
+}
+.odd{
+    color:#272727;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: line-through;
+}
+.pdp__priceSection__priceListText{
+    list-style-type: disc;
+    list-style: none;
+    color: #467348;
+    font-weight: 600;
+
+}
+.pdp__priceSection__priceListText_r{
+    color: #272727;
+    font-size: 14px;
+    list-style: none;
+    font-weight: 500;
+    padding: 5px;
+}
+.pdp__emiLinkTextStyle{
+    color: #337ab7;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline; 
+
+}
+#add_cart{
+    background: #e42529;
+    padding: 15px 12px;
+    width: 48%;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    
+    
+    font-weight: 600;
+}
+#by_n{
+   
+    background: #fc6027;
+    padding: 15px 12px;
+    width: 48%;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
