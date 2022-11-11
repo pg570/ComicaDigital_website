@@ -1,4 +1,5 @@
 import { Box, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Mobile$tel = (
   <Box bg={"#093373"}>
@@ -44,7 +45,8 @@ const Mobile$tel = (
             fontSize={"14px"}
             color={"#ffffff"}
           >
-            Boat New Launch
+          <Link to={"/Allitems/:Boat New Launch"} >
+            Boat New Launch</Link>
           </Text>
         </Stack>
         <Stack gap={"5px"}>
@@ -70,7 +72,8 @@ const Mobile$tel = (
             fontSize={"14px"}
             color={"#ffffff"}
           >
-            Mobile_Accessories
+          <Link to={"/Allitems/smartphone"}>
+            Mobile_Accessories</Link>
           </Text>
           <Text
             cursor={"pointer"}

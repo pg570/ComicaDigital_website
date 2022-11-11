@@ -103,7 +103,7 @@ const CartPage = () => {
                   </Text>
                   <Flex gap={"2px"}>
                     {val.map((e) => {
-                      return <Image h={"18px"} w={"18px"} src={ratingicon} />;
+                      return <Image key={e} h={"18px"} w={"18px"} src={ratingicon} />;
                     })}
                     <Text
                       color={"#003380"}
