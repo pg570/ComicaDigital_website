@@ -5,9 +5,11 @@ import CartPage from './pages/Product Page/CartPage/CartPage';
 import Catogarybar from './pages/Product Page/Catogarybar';
 import Filters from './pages/Product Page/Filters';
 
+
 function App() {
   return (
     <div className="App">
+
    
     
   
