@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+
+import React from 'react'
 import {Box, Button, Input, useDisclosure,Flex, Heading} from "@chakra-ui/react"
 import {
     Modal,
@@ -13,10 +14,8 @@ import {
 
   } from '@chakra-ui/react'
   import "./payment.css"
- 
-  
 
-const Paymets = ({handleChange,handleSubmit}) => {
+const Editpayment = ({handleEditChange,handleEdit}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
   
     
@@ -30,7 +29,7 @@ const Paymets = ({handleChange,handleSubmit}) => {
  
 
     <>
-      <Button class="priya_on" onClick={onOpen}>ADD NEW SHIPPING ADDRESS</Button>
+      <Button class="priya_on" onClick={onOpen}>Edit</Button>
      
 
       <Modal 
@@ -41,30 +40,30 @@ const Paymets = ({handleChange,handleSubmit}) => {
       >
         <ModalOverlay />
         <ModalContent id="pr_in">
-            <Box sx={{backgroundColor:"#3399cc",color:"white",padding:"13px 20px"}}> <Heading sx={{fontSize:"19px"}}>Add a new Address</Heading></Box>
+            <Box sx={{backgroundColor:"#3399cc",color:"white",padding:"13px 20px"}}> <Heading sx={{fontSize:"19px"}}>Edit Address</Heading></Box>
          
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-             <Input  onChange={(e)=>handleChange(e)} name="pincode"  ref={initialRef} placeholder='Pin Code' />
+             <Input  onChange={(e)=>handleEditChange(e)} name="pincode"  ref={initialRef} placeholder='Pin Code' />
             </FormControl>
 
             <FormControl mt={4}>
             
               <Flex sx={{gap:"6px"}}>
-              <Input onChange={(e)=>handleChange(e)} name="firstname" placeholder='First name' />
-              <Input onChange={(e)=>handleChange(e)} name="lastname" placeholder='Last name' />
+              <Input onChange={(e)=>handleEditChange(e)} name="firstname" placeholder='First name' />
+              <Input onChange={(e)=>handleEditChange(e)} name="lastname" placeholder='Last name' />
               </Flex>
              
             </FormControl>
 
 
             <FormControl mt={4}>
-             <Input onChange={(e)=>handleChange(e)}  name="address"  placeholder=' Enter Colony/Street' />
+             <Input onChange={(e)=>handleEditChange(e)}  name="address"  placeholder='Enter Flat No. /House No. /Floor /Building' />
             </FormControl>
 
             <FormControl mt={4}>
-             <Input   placeholder='Enter Flat No. /House No. /Floor /Building' />
+             <Input   placeholder='Enter Colony/Street' />
             </FormControl>
 
             
@@ -75,9 +74,9 @@ const Paymets = ({handleChange,handleSubmit}) => {
             <FormControl mt={4}>
             
             <Flex sx={{gap:"6px"}}>
-            <Input onChange={(e)=>handleChange(e)} name="city" placeholder='Enter City' />
+            <Input onChange={(e)=>handleEditChange(e)} name="city" placeholder='Enter City' />
           
-            <Input onChange={(e)=>handleChange(e)}  name="state" placeholder='Enter State' />
+            <Input onChange={(e)=>handleEditChange(e)}  name="state" placeholder='Enter State' />
             </Flex>
            
           </FormControl>
@@ -85,7 +84,7 @@ const Paymets = ({handleChange,handleSubmit}) => {
           <FormControl mt={4}>
             
             <Flex sx={{gap:"6px"}}>
-            <Input onChange={(e)=>handleChange(e)} name="mobile" placeholder='Enter Mobile Number' />
+            <Input onChange={(e)=>handleEditChange(e)} name="mobile" placeholder='Enter Mobile Number' />
             <Input placeholder='Enter Landline Number' />
             </Flex>
            
@@ -95,7 +94,7 @@ const Paymets = ({handleChange,handleSubmit}) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={handleSubmit} colorScheme='blue' mr={3}>
+            <Button onClick={handleEdit} colorScheme='blue' mr={3}>
               Submit
             </Button>
             <Button onClick={onClose}>Cancel</Button>
@@ -108,4 +107,4 @@ const Paymets = ({handleChange,handleSubmit}) => {
   )
 }
 
-export default Paymets
+export default Editpayment

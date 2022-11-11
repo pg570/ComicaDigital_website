@@ -4,8 +4,12 @@ import React,{useState,useEffect} from 'react'
 import "./payment.css"
 import Paymets from './Paymet'
 import axios from 'axios'
+import Editpayment from './Editpayment'
+import { useContext } from 'react'
+import { AppProvider } from './context/Context'
 
 const Paymentform = () => {
+  const {setData}=useContext(AppProvider)
     const [payme,setPayme] = useState([])
     const [invoice , setInvoice] = useState({
         pincode:"",
@@ -30,6 +34,23 @@ const Paymentform = () => {
           
           
         }
+
+        const handleEditChange = (event) => {
+          const {name, value} = event.target
+          setInvoice({
+           ...invoice,
+            [name]: value
+            
+          })
+          
+          
+        }
+        
+        
+
+
+
+
         async function handleSubmit(e){
           e.preventDefault()
           console.log(invoice)
@@ -37,6 +58,7 @@ const Paymentform = () => {
             let res=await axios.post("http://localhost:8080/payment",invoice)
             console.log(res.data)
             setAddress(res.data)
+            setData(res.data)
     
     
           }catch(e){
@@ -46,7 +68,7 @@ const Paymentform = () => {
 
          useEffect( () => {
        
-        }, [address])
+        }, [])
         
         const handleDelete = async (id) => {
             try{
@@ -54,6 +76,7 @@ const Paymentform = () => {
                 await axios.delete(`http://localhost:8080/user/${id}`)
                  alert ("Delete Successful")
                  setAddress([])
+                 setData([])
         
         
               }catch(e){
@@ -62,7 +85,19 @@ const Paymentform = () => {
           
         }
        
-      console.log(address,"me address hu")
+        const handleEdit = async (id) => {
+          try{
+              
+           let data =   await axios.patch(`http://localhost:8080/user/${id}`,invoice)
+              setAddress(data.data)
+      
+      
+            }catch(e){
+              console.log(e.message)
+            }
+        
+      }
+      // console.log(address,"me address hu")
     
   return (
     <Box sx={{backgroundColor:"#f5f7f7"}}>
@@ -77,13 +112,13 @@ const Paymentform = () => {
 
             <h6 class="owl_schl">{address?.firstname}  {address?.lastname} </h6>
           
-            <Text sx={{marginLeft:"13px",color:"black",fontSize:"15px",paddingTop:"5px"}}>{address.address} {address.city} {address.pincode}  {address.state}</Text>
+            <Text sx={{marginLeft:"13px",color:"black",fontSize:"15px",paddingTop:"5px"}}>{address.address}, {address.city}, {address.city}-{address.pincode},  {address.state}</Text>
            
             <Text sx={{marginLeft:"13px",color:"black",fontSize:"15px",paddingTop:"5px"}}><b id="spcl_b">Mobile : </b>{address.mobile}</Text>
 <br/>
 <br/>
             <Flex>
-                <Button className="raja_wat">Edit</Button>
+                <Button className="raja_wat"><Editpayment handleEditChange={handleEditChange} handleEdit={handleEdit(address?._id)}/></Button>
                 <Button onClick={()=>handleDelete(address?._id)} className="raja_wat" >Delete</Button>
             </Flex>
             
