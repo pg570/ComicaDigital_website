@@ -1,13 +1,21 @@
-import logo from './logo.svg';
+import { Flex } from '@chakra-ui/react';
 import './App.css';
-import Detail from './components/ProductDetail/Detail';
-import Paymets from './pages/Payments Page/Paymets';
+import Allitemspage from './pages/Product Page/Allitemspage';
+import CartPage from './pages/Product Page/CartPage/CartPage';
+import Catogarybar from './pages/Product Page/Catogarybar';
+import Filters from './pages/Product Page/Filters';
+
 
 function App() {
   return (
     <div className="App">
-     
-     
+
+    <CartPage/>
+    <Catogarybar/>
+  
+   
+    <Allitemspage/>
+   
     </div>
   );
 }
