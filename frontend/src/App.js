@@ -10,14 +10,31 @@ function App() {
   return (
     <div className="App">
 
-    <CartPage/>
-    <Catogarybar/>
-  
    
-    <Allitemspage/>
+    
+  
+    
    
     </div>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//madhusainadh test
+// <Catogarybar/>
+//     <CartPage/>
+//     <Allitemspage/>

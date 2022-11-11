@@ -29,47 +29,46 @@ const Filters = () => {
   const [sliderValue, setSliderValue] = useState(min);
   const [showTooltip, setShowTooltip] = useState(false);
   return (
-    <Box w={"340px"} p={"10px"} h={"100%"} >
+    <Box w={"340px"} p={"10px"} h={"100%"}>
       <Box w={"328px"}>
         <Box bg={"#ffffff"}>
           <Text> Filters</Text>
-          <Box m={"7px"}>
-            <Slider
-              mt={"30px"}
-              mb={"20px"}
-              w={"268px"}
-              id="slider"
-              // defaultValue={10}
-              min={min}
-              max={max}
-              colorScheme="teal"
-              onChange={(v) => setSliderValue(v)}
-              onMouseEnter={() => setShowTooltip(true)}
-              onMouseLeave={() => setShowTooltip(false)}
-            >
-              <SliderMark value={min} mt="1" ml="-2.5" fontSize="sm">
-                {min}
-              </SliderMark>
-
-              <SliderMark value={max} mt="1" ml="-2.5" fontSize="sm">
-                {max}
-              </SliderMark>
-              <SliderTrack>
-                <SliderFilledTrack />
-              </SliderTrack>
-              <Tooltip
-                hasArrow
-                bg="teal.500"
-                color="white"
-                placement="top"
-                isOpen={showTooltip}
-                label={`${sliderValue}₹`}
-              >
-                <SliderThumb />
-              </Tooltip>
-            </Slider>
-          </Box>
         </Box>
+        <Box bg={"#ffffff"} m={"7px"}>
+        <Slider
+          mt={"30px"}
+          mb={"20px"}
+          w={"268px"}
+          id="slider"
+          // defaultValue={10}
+          min={min}
+          max={max}
+          colorScheme="teal"
+          onChange={(v) => setSliderValue(v)}
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
+        >
+          <SliderMark value={min} mt="1" ml="-2.5" fontSize="sm">
+            {min}
+          </SliderMark>
+
+          <SliderMark value={max} mt="1" ml="-2.5" fontSize="sm">
+            {max}
+          </SliderMark>
+          <SliderTrack>
+            <SliderFilledTrack />
+          </SliderTrack>
+          <Tooltip
+            hasArrow
+            bg="teal.500"
+            color="white"
+            placement="top"
+            isOpen={showTooltip}
+            label={`${sliderValue}₹`}
+          >
+            <SliderThumb />
+          </Tooltip>
+        </Slider>
         <Flex bg={"#ffffff"}>
           <Box>
             <lable>Min</lable>
@@ -80,7 +79,7 @@ const Filters = () => {
               placeholder="min"
             />
           </Box>
-          <Text p={"5px"} mt={"10"}>
+          <Text p={"5px"} mt={"30px"}>
             to
           </Text>
           <Box>
@@ -93,7 +92,7 @@ const Filters = () => {
             />
           </Box>
           <Button
-          mt={"10%"}
+            mt={"10%"}
             h={"36px"}
             w={"50px"}
             bg={"#003380"}
@@ -106,6 +105,7 @@ const Filters = () => {
             <Text fontSize={"14px"}> GO</Text>
           </Button>
         </Flex>
+      </Box>
         <Stack
           mt={"7px"}
           p={"10px"}
@@ -129,9 +129,15 @@ const Filters = () => {
           <h4 fontSize={"14px"} color={"#5a5a59"}>
             Category
           </h4>
+          <div style={{ display: "flex" }}>
+            <Checkbox> </Checkbox>
 
-          <Checkbox> Sports & Fitneww Watches</Checkbox>
-          <Checkbox> Wearable Technology</Checkbox>
+            <p>Sports & Fitneww Watches</p>
+          </div>
+          <div style={{ display: "flex" }}>
+            <Checkbox> </Checkbox>
+            <p>Wearable Technology</p>
+          </div>
         </Stack>
         <Stack
           mt={"7px"}
@@ -146,6 +152,7 @@ const Filters = () => {
 
           <Checkbox> boAt</Checkbox>
         </Stack>
+       
       </Box>
     </Box>
   );

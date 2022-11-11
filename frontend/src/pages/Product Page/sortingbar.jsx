@@ -3,7 +3,7 @@ import React from "react";
 
 const Sortingbar = () => {
   return (
-    <Flex p={"10px"} justifyContent={"space-between"}>
+    <Flex bg={"#ffffff"} mb={"7px"} p={"10px"} justifyContent={"space-between"}>
       <Stack w={"40%"} textAlign={"start"}>
         <Heading fontFamily={"Roboto"} color={"#333333"} fontSize={"24px"}>
           Sortingbar
@@ -12,7 +12,9 @@ const Sortingbar = () => {
           (Showing 1-9 products of 9 products)
         </Text>
       </Stack>
-      <Flex w={"50%"} pr={"50px"} justifyContent={"space-between"} >
+      <Flex display={{
+        base:"none"
+      }} w={"50%"} pr={"50px"} justifyContent={"space-between"} >
       <Box
         h={"30px"}
         w={"100px"}
