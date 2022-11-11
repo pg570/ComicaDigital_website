@@ -6,9 +6,8 @@ import Paymets from './pages/Payments Page/Paymets';
 function App() {
   return (
     <div className="App">
-      Home
-      <Detail/>
-      <Paymets/>
+     
+     
     </div>
   );
 }
