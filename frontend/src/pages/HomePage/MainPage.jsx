@@ -6,14 +6,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MultiSliderCart from "./MultiSliderCart";
 import Container from "./Container";
+import { MobileAndTablets } from "./NavbarTitles";
 
 function MainPage() {
   return (
     <Box color={"black"}>
       <Box color={"white"}>
         <Navbar />
+        <MobileAndTablets/>
       </Box>
-      {/* <Box
+      <Box
         width={"100%"}
         bgColor={"white"}
         height="auto"
@@ -24,7 +26,7 @@ function MainPage() {
       </Box>
       <Box color={"white"}>
         <Footer />
-      </Box> */}
+      </Box>
     </Box>
   );
 }

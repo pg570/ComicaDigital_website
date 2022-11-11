@@ -4,9 +4,17 @@ import { MdLocationOn } from "react-icons/md";
 import { BsCartFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import PhoneNavDrawer from "./PhoneNavDrawer";
+import { MobileAndTablets } from "./NavbarTitles";
 function Navbar() {
   const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)')
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const handleMouseOver = ()=>{
+    console.log("open div")
+    // <MobileAndTablets/>
+  }
+  const handleMouseOut = ()=>{
+    console.log("close div")
+  }
   return (
     <>
       <Box bgColor={"#e42529"}>
@@ -58,7 +66,7 @@ function Navbar() {
         </Box>
 
         {isLargerThan1000&&<HStack gap="30px" justifyContent={"space-between"} bgColor={"#003380"} p="10px 40px 10px 40px">
-            <Text>MOBILES & TABLETS</Text>
+            <Text onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>MOBILES & TABLETS</Text>
             <Text>TELEVISION</Text>
             <Text>AUDIO</Text>
             <Text>HOME APPLIANCES</Text>
@@ -74,3 +82,6 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
+

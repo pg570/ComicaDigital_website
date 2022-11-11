@@ -2,10 +2,12 @@ import {
   Box,
   Button,
   Divider,
+  Flex,
   Heading,
   HStack,
   Image,
   Text,
+  useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
@@ -16,6 +18,7 @@ import {
 } from "react-icons/ai";
 
 function Footer() {
+  const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)')
   return (
     <Box bgColor={"#003380"}>
       <HStack
@@ -54,7 +57,7 @@ function Footer() {
           <Text>Feature Stories</Text>
           <Text>Event & Happenings</Text>
         </Box>
-        <Box>
+        {isLargerThan1000&&<Box>
           <Heading fontSize={"md"}>POLICIES</Heading>
           <Text>Terms of Use</Text>
           <Text>FAQs</Text>
@@ -66,11 +69,17 @@ function Footer() {
           <Text>EMI and Additional Cashback T&C</Text>
           <Text>RelianceOne Loyalty Program T&C</Text>
           <Text>Caution Notice</Text>
-        </Box>
+        </Box>}
       </HStack>
 
       <Box textAlign={"left"}>
-        <HStack justifyContent={"flex-start"} alignItems="flex-start" gap={"20rem"} p="20px 60px 30px 60px">
+        <Flex
+          direction={["column","row","row"]}
+          justifyContent={"flex-start"}
+          alignItems="flex-start"
+          gap={["2rem","20%","20%"]}
+          p="20px 60px 30px 60px"
+        >
           <VStack alignItems={"flex-start"}>
             <Heading fontSize={"md"}>FOLLOW US</Heading>
             <HStack>
@@ -90,16 +99,31 @@ function Footer() {
               EXPERIENCE RELIANCE DIGITAL APP ON MOBILE
             </Heading>
             <HStack>
-              <Image src="https://www.reliancedigital.in/build/client/images/google_play_store.png" width={"8rem"} />
-              <Image src="https://www.reliancedigital.in/build/client/images/ios_app_store_icon.png" width={"8rem"} />
+              <Image
+                src="https://www.reliancedigital.in/build/client/images/google_play_store.png"
+                width={"8rem"}
+              />
+              <Image
+                src="https://www.reliancedigital.in/build/client/images/ios_app_store_icon.png"
+                width={"8rem"}
+              />
             </HStack>
           </VStack>
-        </HStack>
+        </Flex>
       </Box>
       <Box bgColor={"#0a244a"} textAlign="center" p="10px 0px 10px 0px">
-        <Heading size={"sm"} textDecor="underline" mb={"20px"}>Disclaimer</Heading>
-        <Text width={"88%"} margin="auto">Product prices, offers and availability are subject to change from time to time. All prices are inclusive of taxes. Product colours & images are only for illustration and they may not exactly match with the actual product. Product specs are subject to change & may vary from actual product. While every care is taken to avoid inaccuracies in content, these are provided as is, without warranty of any kind.</Text>
-        <Divider orientation='horizontal' m="20px 0px 20px 0px"/>
+        <Heading size={"sm"} textDecor="underline" mb={"20px"}>
+          Disclaimer
+        </Heading>
+        <Text width={"88%"} margin="auto">
+          Product prices, offers and availability are subject to change from
+          time to time. All prices are inclusive of taxes. Product colours &
+          images are only for illustration and they may not exactly match with
+          the actual product. Product specs are subject to change & may vary
+          from actual product. While every care is taken to avoid inaccuracies
+          in content, these are provided as is, without warranty of any kind.
+        </Text>
+        <Divider orientation="horizontal" m="20px 0px 20px 0px" />
         <Text> © 2022 Reliance Digital. All Rights Reserved.</Text>
       </Box>
     </Box>
