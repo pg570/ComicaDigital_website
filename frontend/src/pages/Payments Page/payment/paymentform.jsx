@@ -1,4 +1,4 @@
-import { Box,Button,Text,Flex, Link } from '@chakra-ui/react'
+import { Box,Button,Text,Flex} from '@chakra-ui/react'
 import React,{useState,useEffect} from 'react'
 
 import "./payment.css"
@@ -7,7 +7,7 @@ import axios from 'axios'
 import Editpayment from './Editpayment'
 import { useContext } from 'react'
 import { AppProvider } from './context/Context'
-
+import { Link } from 'react-router-dom'
 const Paymentform = () => {
   const {setData}=useContext(AppProvider)
     const [payme,setPayme] = useState([])
@@ -151,8 +151,11 @@ const Paymentform = () => {
         <br/>
 
         <Flex sx={{borderTop:"1px solid #dddddd",gap:"20px",padding:"7px 0px 0px 7px"}}>
-          <Button class='pri_btn'>DELIVER HERE</Button> 
-          
+           <Button class='pri_btn'>   <Link to="/nextpayment">
+            DELIVER HERE  </Link>
+            </Button> 
+       
+       
           
             <Paymets handleChange={handleChange}  handleSubmit={handleSubmit}/>
             
