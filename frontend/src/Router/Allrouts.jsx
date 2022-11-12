@@ -13,10 +13,10 @@ import CartPage from "../pages/Product Page/CartPage/CartPage";
 import Catogarybar from "../pages/Product Page/Catogarybar";
 import PricingPage from "../../src/pages/Payments Page/payment/PayRoutes/AllpaymentGateway/PricingPage";
 import MainPage from "../pages/Home Page/MainPage";
+import Navbar from "../pages/Home Page/Navbar";
 const Allrouts = () => {
   return (
     <Box>
-      
       <Routes>
         <Route path={"/homepage"} element={<MainPage />} />
         <Route path={"/Allitems/:category"} element={<Allitemspage />} />

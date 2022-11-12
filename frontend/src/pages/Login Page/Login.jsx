@@ -12,15 +12,20 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Footer from "../HomePage/Footer";
-import Navbar from "../HomePage/Navbar";
+import Footer from "../Home Page/Footer";
+import Navbar from "../Home Page/Navbar";
+import {useDispatch,useSelector} from "react-redux"
+import { loginAPI } from "../../store/auth/auth.actions";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const data = useSelector(store=>store.auth)
   const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
-    number: "",
+    password: "",
   });
 
   const handleInputChange = (e) => {
@@ -31,12 +36,22 @@ function Login() {
     });
   };
 
-  console.log(formState);
+  const isErrorEmail = formState.email === "";
+  const isErrorPassword = formState.password === "";
 
-  const isErrorMobileNo = formState.number === "";
+  const handleSubmit = ()=>{
+    dispatch(loginAPI(formState))
+  }
+
+  useEffect(()=>{
+    if(data.isAuthenticated){
+      // navigate("/")
+      console.log("home page")
+    }
+  })
 
   return (
-    <Box color={"black"}>
+    <Box color={"black"} bgColor="white">
       <Box color={"white"}>
         <Navbar />
       </Box>
@@ -54,7 +69,7 @@ function Login() {
             />
           </Box>
           <FormControl
-            isInvalid={isErrorMobileNo}
+            isInvalid={isErrorEmail||isErrorPassword}
             width={{ sm: "100%" }}
             margin={"auto"}
             boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
@@ -66,25 +81,41 @@ function Login() {
               Login / Register
             </Heading>
 
-            <FormLabel>Mobile Number*</FormLabel>
-            <Input
-              type="number"
-              value={formState.number}
-              name="number"
-              onChange={handleInputChange}
-            />
-            {!isErrorMobileNo ? (
-              <FormHelperText>
-                Enter the email you'd like to receive the newsletter on.
-              </FormHelperText>
-            ) : (
-              <FormErrorMessage>
-                Mandatory fields cannot be empty
-              </FormErrorMessage>
-            )}
-            <Button colorScheme={"red"} width="100%">
-              PROCEED
-            </Button>
+            <FormLabel>Email*</FormLabel>
+          <Input
+            type="email"
+            value={formState.email}
+            name="email"
+            onChange={handleInputChange}
+          />
+          {!isErrorEmail ? (
+            <FormHelperText>
+              Enter the email you'd like to receive the newsletter on.
+            </FormHelperText>
+          ) : (
+            <FormErrorMessage>
+              Mandatory fields cannot be empty
+            </FormErrorMessage>
+          )}
+          <FormLabel>Password*</FormLabel>
+          <Input
+            type="text"
+            value={formState.password}
+            name="password"
+            onChange={handleInputChange}
+          />
+          {!isErrorPassword ? (
+            <FormHelperText>
+              Enter the email you'd like to receive the newsletter on.
+            </FormHelperText>
+          ) : (
+            <FormErrorMessage>
+              Mandatory fields cannot be empty
+            </FormErrorMessage>
+          )}
+          <Button colorScheme={"red"} width="100%" onClick={handleSubmit}>
+            PROCEED
+          </Button>
           </FormControl>
         </Flex>
       </Box>

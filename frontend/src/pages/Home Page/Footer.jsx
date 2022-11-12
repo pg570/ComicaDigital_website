@@ -27,6 +27,7 @@ function Footer() {
         p="20px 60px 0px 60px"
         alignItems={"flex-start"}
         lineHeight="35px"
+        
       >
         <Box>
           <Heading fontSize={"md"}>PRODUCT CATEGORIES</Heading>
