@@ -7,13 +7,15 @@ import "slick-carousel/slick/slick-theme.css";
 import MultiSliderCart from "./MultiSliderCart";
 import Container from "./Container";
 import { MobileAndTablets } from "./NavbarTitles";
+import Catogarybar from "../Product Page/Catogarybar";
 
 function MainPage() {
   return (
     <Box color={"black"}>
       <Box color={"white"}>
-        <Navbar />
-        {/* <MobileAndTablets/> */}
+       
+       {/** changed  by madhu */}
+       
       </Box>
       <Box
         width={"100%"}
@@ -24,9 +26,7 @@ function MainPage() {
       >
         <Container/>
       </Box>
-      <Box color={"white"}>
-        <Footer />
-      </Box>
+      
     </Box>
   );
 }
