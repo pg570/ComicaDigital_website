@@ -108,3 +108,22 @@
 #spcl_b{
     color:black;
 }
+.p_riya{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0px 12px;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 38px;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 3px;
+    float: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(228, 37, 41);
+    border: 1px solid rgb(228, 37, 41);
+}
