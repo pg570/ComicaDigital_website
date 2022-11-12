@@ -1,19 +1,16 @@
 import React from "react";
-import { Box, Button, Grid, GridItem, Heading, Image } from "@chakra-ui/react";
+import { Box} from "@chakra-ui/react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import MultiSliderCart from "./MultiSliderCart";
 import Container from "./Container";
-import { MobileAndTablets } from "./NavbarTitles";
 
 function MainPage() {
   return (
     <Box color={"black"}>
       <Box color={"white"}>
         <Navbar />
-        {/* <MobileAndTablets/> */}
       </Box>
       <Box
         width={"100%"}

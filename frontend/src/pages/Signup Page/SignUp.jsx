@@ -9,16 +9,23 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import Footer from "../HomePage/Footer";
-import Navbar from "../HomePage/Navbar";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Footer from "../Home Page/Footer";
+import Navbar from "../Home Page/Navbar";
+import {useDispatch,useSelector} from "react-redux"
+import { signUpAPI } from "../../store/auth/auth.actions";
+
+
 
 function SignUp() {
+  const dispatch = useDispatch()
+  const data = useSelector(store=>store.auth)
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    number: "",
+    password: "",
   });
 
   const handleInputChange = (e) => {
@@ -29,19 +36,32 @@ function SignUp() {
     });
   };
 
-  console.log(formState);
-
   const isErrorEmail = formState.email === "";
-  const isErrorMobileNo = formState.number === "";
+  const isErrorPassword = formState.password === "";
+
+  const handleSubmit = ()=>{
+    dispatch(signUpAPI(formState))
+  }
+
+  useEffect(()=>{
+    if(data.error){
+      console.log("login")
+    }
+    if(data.loading){
+      console.log("loading")
+    }
+  })
+  console.log(data)
+
 
   return (
-    <Box color={"black"}>
+    <Box color={"black"} bgColor="white">
       <Box color={"white"}>
         <Navbar />
       </Box>
       <Box p="50px 50px">
         <FormControl
-          isInvalid={isErrorEmail || isErrorMobileNo}
+          isInvalid={isErrorEmail || isErrorPassword}
           width="30%"
           margin={"auto"}
           boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
@@ -83,14 +103,14 @@ function SignUp() {
             </FormErrorMessage>
           )}
           <Button>VERIFY EMAIL</Button>
-          <FormLabel>Mobile Number*</FormLabel>
+          <FormLabel>Password*</FormLabel>
           <Input
-            type="number"
-            value={formState.number}
-            name="number"
+            type="text"
+            value={formState.password}
+            name="password"
             onChange={handleInputChange}
           />
-          {!isErrorMobileNo ? (
+          {!isErrorPassword ? (
             <FormHelperText>
               Enter the email you'd like to receive the newsletter on.
             </FormHelperText>
@@ -99,7 +119,7 @@ function SignUp() {
               Mandatory fields cannot be empty
             </FormErrorMessage>
           )}
-          <Button colorScheme={"red"} width="100%">
+          <Button colorScheme={"red"} width="100%" onClick={handleSubmit}>
             PROCEED
           </Button>
           <Box>

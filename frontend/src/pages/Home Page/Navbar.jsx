@@ -15,12 +15,18 @@ import PhoneNavDrawer from "./PhoneNavDrawer";
 import { MobileAndTablets } from "./NavbarTitles";
 import { useState } from "react";
 import Catogarybar from "../Product Page/Catogarybar";
+import {useDispatch,useSelector} from "react-redux"
+import { store } from "../../store/store";
+import { logout } from "../../store/auth/auth.actions";
+
+
 function Navbar() {
   const [isLargerThan1000] = useMediaQuery("(min-width: 1000px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [display, setDisplay] = useState(false);
   const [titleText, setTitleText] = useState("");
   const [click, setClick] = useState(false);
+  const {isAuthenticated} = useSelector(store=>store.auth)
   const handleMouseOver = (text) => {
     setTitleText(text);
     setDisplay(true);
@@ -31,6 +37,7 @@ function Navbar() {
   const handleClick = () => {
     setClick(!click);
   };
+  console.log(isAuthenticated)
 
   return (
     <>
@@ -92,7 +99,7 @@ function Navbar() {
                 <BsCartFill />
                 <Text>Cart |</Text>
                 <CgProfile />
-                <Text>Login</Text>
+                <Text>{isAuthenticated?<AfterUserLogin/>:"Login"}</Text>
               </HStack>
             )}
           </HStack>
@@ -139,3 +146,26 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
+function AfterUserLogin(){
+  const dispatch = useDispatch()
+  const data = useSelector(store=>store.auth)
+  const [status,setStatus] = useState(false)
+const handleOpen = ()=>{
+  setStatus(!status)
+}
+const handleLogout = ()=>{
+  dispatch(logout())
+}
+  return (
+    <>
+    <Text onClick={handleOpen}>hi aman</Text>
+    {
+      status && <Box bgColor={"blue.500"} borderRadius="10px" position="absolute" top={"80px"} height="50px" p="20px" right={"0px"}>
+        <Text onClick={handleLogout}>LogOut</Text>
+      </Box>
+    }
+    </>
+  )
+}
