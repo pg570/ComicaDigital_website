@@ -43,15 +43,17 @@ function Navbar() {
     <>
       {/* ---------------------------------------title div---------------------------------------- */}
 
-      {display&&<Box
-        display={display ? "block" : "none"}
-        position={"absolute"}
-        top="130px"
-        zIndex={10}
-        width="100%"
-      >
-        <MobileAndTablets />
-      </Box>}
+      {display && (
+        <Box
+          display={display ? "block" : "none"}
+          position={"absolute"}
+          top="130px"
+          zIndex={10}
+          width="100%"
+        >
+          <MobileAndTablets />
+        </Box>
+      )}
 
       <Box bgColor={"#e42529"}>
         {/* -------------------------------------------------------------------------- */}
@@ -73,7 +75,7 @@ function Navbar() {
           <Text>Contact us</Text>
         </HStack>
 
-        <Box width={"100%"}>
+        <Box pb={"3px"} width={"100%"}>
           <HStack
             justifyContent={"space-between"}
             p="0px 20px 0px 40px"
@@ -105,7 +107,7 @@ function Navbar() {
           </HStack>
           {/* ------------------------------------phone------------------------------------- */}
           {!isLargerThan1000 && (
-            <HStack justifyContent={"flex-end"} mr="20px">
+            <HStack  justifyContent={"flex-end"} mr="20px">
               <Text>Select your PIN Code |</Text>
               <BsCartFill />
               <Text>Cart |</Text>
@@ -119,10 +121,10 @@ function Navbar() {
           <HStack
             gap="30px"
             justifyContent={"space-between"}
-            bgColor={"#003380"}
+            // bgColor={"#003380"}
             p="10px 40px 10px 40px"
           >
-            <Catogarybar/>
+            
             {/* <Text
               // onClick={handleClick}
               onMouseOver={() => handleMouseOver("MOBILE&TABLETS")}
@@ -140,6 +142,7 @@ function Navbar() {
             <Text>ACCESSORIES</Text> */}
           </HStack>
         )}
+        <Catogarybar />
       </Box>
     </>
   );

@@ -5,12 +5,15 @@ import Footer from "./Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Container from "./Container";
+import { MobileAndTablets } from "./NavbarTitles";
 
 function MainPage() {
   return (
     <Box color={"black"}>
       <Box color={"white"}>
-        <Navbar />
+       
+       {/** changed  by madhu */}
+       
       </Box>
       <Box
         width={"100%"}
@@ -21,9 +24,7 @@ function MainPage() {
       >
         <Container/>
       </Box>
-      <Box color={"white"}>
-        <Footer />
-      </Box>
+      
     </Box>
   );
 }

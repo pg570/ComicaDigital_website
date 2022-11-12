@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
-const Sortingbar = () => {
+const Sortingbar = (props) => {
   return (
     <Flex bg={"#ffffff"} mb={"7px"} p={"10px"} justifyContent={"space-between"}>
       <Stack w={"40%"} textAlign={"start"}>
@@ -12,9 +12,13 @@ const Sortingbar = () => {
           (Showing 1-9 products of 9 products)
         </Text>
       </Stack>
-      <Flex display={{
-        base:"none"
-      }} w={"50%"} pr={"50px"} justifyContent={"space-between"} >
+      <Flex 
+      display={{
+        base: "none",
+        md: "inline-flex",
+        lg: "inline-flex",
+      }}
+      w={"50%"} pr={"50px"} justifyContent={"space-between"} >
       <Box
         h={"30px"}
         w={"100px"}
@@ -38,6 +42,7 @@ const Sortingbar = () => {
         bg={"#f5f7f7"}
         fontSize={"12px"}
         borderRadius={"6px"}
+        onClick={props.asscending}
       >
         Price(Low - High)
       </Box>
@@ -51,6 +56,7 @@ const Sortingbar = () => {
         bg={"#f5f7f7"}
         fontSize={"12px"}
         borderRadius={"6px"}
+        onClick={props.decending}
       >
         Price(High - Low)
       </Box>

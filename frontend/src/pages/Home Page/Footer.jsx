@@ -20,13 +20,14 @@ import {
 function Footer() {
   const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)')
   return (
-    <Box bgColor={"#003380"}>
+    <Box color={"#ffffff"} bgColor={"#003380"}>
       <HStack
         textAlign={"left"}
         justifyContent="space-between"
         p="20px 60px 0px 60px"
         alignItems={"flex-start"}
         lineHeight="35px"
+        
       >
         <Box>
           <Heading fontSize={"md"}>PRODUCT CATEGORIES</Heading>
@@ -40,9 +41,9 @@ function Footer() {
           <Text>Accessories</Text>
           <Text>Personal Care & Grooming</Text>
         </Box>
-        <Box>
+        <Box color={"#ffffff"}>
           <Heading fontSize={"md"}>SITE INFO</Heading>
-          <Text>About Reliance Digital</Text>
+          <Text >About Reliance Digital</Text>
           <Text>resQ Services</Text>
           <Text>Site Map</Text>
           <Text>Gift Cards</Text>
