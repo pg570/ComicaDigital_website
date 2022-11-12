@@ -14,6 +14,8 @@ import Catogarybar from "../pages/Product Page/Catogarybar";
 import PricingPage from "../../src/pages/Payments Page/payment/PayRoutes/AllpaymentGateway/PricingPage";
 import MainPage from "../pages/Home Page/MainPage";
 import Navbar from "../pages/Home Page/Navbar";
+import Login from "../pages/Login Page/Login";
+import SignUp from "../pages/Signup Page/SignUp";
 const Allrouts = () => {
   return (
     <Box>
@@ -32,7 +34,10 @@ const Allrouts = () => {
           <Route path="/nextpayment/netbanking" element={<NetBanking />} />
           <Route path="/nextpayment/wallet" element={<PricingPage />} />
           <Route path="/nextpayment/credit" element={<CreditCard />} />
+          
         </Route>
+        <Route path="/login" element={<Login/>} />
+        <Route path="/signup" element={<SignUp/>} />
       </Routes>
     </Box>
   );

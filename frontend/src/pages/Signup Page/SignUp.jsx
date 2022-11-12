@@ -13,14 +13,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Footer from "../Home Page/Footer";
 import Navbar from "../Home Page/Navbar";
-import {useDispatch,useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { signUpAPI } from "../../store/auth/auth.actions";
-
-
+import { Link } from "react-router-dom";
 
 function SignUp() {
-  const dispatch = useDispatch()
-  const data = useSelector(store=>store.auth)
+  const dispatch = useDispatch();
+  const data = useSelector((store) => store.auth);
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
@@ -39,26 +38,22 @@ function SignUp() {
   const isErrorEmail = formState.email === "";
   const isErrorPassword = formState.password === "";
 
-  const handleSubmit = ()=>{
-    dispatch(signUpAPI(formState))
-  }
+  const handleSubmit = () => {
+    dispatch(signUpAPI(formState));
+  };
 
-  useEffect(()=>{
-    if(data.error){
-      console.log("login")
+  useEffect(() => {
+    if (data.error) {
+      console.log("login");
     }
-    if(data.loading){
-      console.log("loading")
+    if (data.loading) {
+      console.log("loading");
     }
-  })
-  console.log(data)
-
+  });
+  console.log(data);
 
   return (
     <Box color={"black"} bgColor="white">
-      <Box color={"white"}>
-        <Navbar />
-      </Box>
       <Box p="50px 50px">
         <FormControl
           isInvalid={isErrorEmail || isErrorPassword}
@@ -123,14 +118,22 @@ function SignUp() {
             PROCEED
           </Button>
           <Box>
-            <Text display="inline-block" fontSize={"sm"}> Already Registered? </Text>
-            <Text display="inline-block" fontSize={"sm"} color="red" fontWeight={"bold"}>&nbsp;LOGIN</Text>
+            <Text display="inline-block" fontSize={"sm"}>
+              {" "}
+              Already Registered?{" "}
+            </Text>
+            <Link to="/login">
+              <Text
+                display="inline-block"
+                fontSize={"sm"}
+                color="red"
+                fontWeight={"bold"}
+              >
+                &nbsp;LOGIN
+              </Text>
+            </Link>
           </Box>
         </FormControl>
-      </Box>
-
-      <Box color={"white"}>
-        <Footer />
       </Box>
     </Box>
   );

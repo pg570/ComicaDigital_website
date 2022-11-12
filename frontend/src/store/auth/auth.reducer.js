@@ -1,4 +1,4 @@
-import { AUTH_SIGN_IN_SUCCESS, AUTH_SIGN_OUT, AUTH_SIGN_UP_ERROR, AUTH_SIGN_UP_LOADING, AUTH_SIGN_UP_SUCCESS } from "./auth.types";
+import { AUTH_SIGN_IN_ERROR, AUTH_SIGN_IN_LOADING, AUTH_SIGN_IN_SUCCESS, AUTH_SIGN_OUT, AUTH_SIGN_UP_ERROR, AUTH_SIGN_UP_LOADING, AUTH_SIGN_UP_SUCCESS } from "./auth.types";
 
 // Note: Do not update/change the initial state
 export const authInitalState = {
@@ -39,16 +39,39 @@ export const authReducer = (state = authInitalState,{type,payload}) => {
       localStorage.setItem("token",payload.token)
       return{
         ...state,
+        data:{
         isAuthenticated:true,
         token:payload.token
+        },
+        error:false,
+        loading:false
       } 
     }
+
+    case AUTH_SIGN_IN_LOADING:{
+      return {
+        ...state,
+        error:false,
+        loading:true
+      }
+    }
+
+    case AUTH_SIGN_IN_ERROR:{
+      return {
+        ...state,
+        loading:false,
+        error:true
+      }
+    }
+
     case AUTH_SIGN_OUT:{
       localStorage.removeItem("token")
       return{
         ...state,
+        data:{
         isAuthenticated:false,
         token:""
+        }
       } 
     }
     default:{

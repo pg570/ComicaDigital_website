@@ -20,7 +20,7 @@ function PhoneNavDrawer() {
 
   return (
     <>
-      <Button ref={btnRef} onClick={onOpen}>
+      <Button ref={btnRef} onClick={onOpen} colorScheme="red" variant={"unstyled"}>
         <HamburgerIcon />
       </Button>
       <Drawer
@@ -30,19 +30,19 @@ function PhoneNavDrawer() {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent bgColor={"blue.500"}>
+        <DrawerContent bgColor={"red.700"}>
           <DrawerCloseButton />
 
-          <DrawerBody lineHeight={"40px"} mt="30px">
-            <Text>MOBILES & TABLETS</Text>
-            <Text>TELEVISION</Text>
-            <Text>AUDIO</Text>
-            <Text>HOME APPLIANCES</Text>
-            <Text>COMPUTERS</Text>
-            <Text>CAMERAS</Text>
-            <Text>KITCHEN APPLIANCES</Text>
-            <Text>PERSONAL CARE</Text>
-            <Text>ACCESSORIES</Text>
+          <DrawerBody lineHeight={"40px"} mt="30px" >
+            <Text color={"white"}>MOBILES & TABLETS</Text>
+            <Text color={"white"}>TELEVISION</Text>
+            <Text color={"white"}>AUDIO</Text>
+            <Text color={"white"}>HOME APPLIANCES</Text>
+            <Text color={"white"}>COMPUTERS</Text>
+            <Text color={"white"}>CAMERAS</Text>
+            <Text color={"white"}>KITCHEN APPLIANCES</Text>
+            <Text color={"white"}>PERSONAL CARE</Text>
+            <Text color={"white"}>ACCESSORIES</Text>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

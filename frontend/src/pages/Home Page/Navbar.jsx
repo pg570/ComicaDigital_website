@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
+  Button,
   HStack,
   Image,
   Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Text,
   useDisclosure,
   useMediaQuery,
+  useToast,
 } from "@chakra-ui/react";
 import { MdLocationOn } from "react-icons/md";
 import { BsCartFill } from "react-icons/bs";
@@ -15,10 +21,11 @@ import PhoneNavDrawer from "./PhoneNavDrawer";
 import { MobileAndTablets } from "./NavbarTitles";
 import { useState } from "react";
 import Catogarybar from "../Product Page/Catogarybar";
-import {useDispatch,useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../store/store";
 import { logout } from "../../store/auth/auth.actions";
-
+import { Link } from "react-router-dom";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 function Navbar() {
   const [isLargerThan1000] = useMediaQuery("(min-width: 1000px)");
@@ -26,7 +33,9 @@ function Navbar() {
   const [display, setDisplay] = useState(false);
   const [titleText, setTitleText] = useState("");
   const [click, setClick] = useState(false);
-  const {isAuthenticated} = useSelector(store=>store.auth)
+  const { data, error, loading } = useSelector((store) => store.auth);
+  const toast = useToast();
+
   const handleMouseOver = (text) => {
     setTitleText(text);
     setDisplay(true);
@@ -37,30 +46,17 @@ function Navbar() {
   const handleClick = () => {
     setClick(!click);
   };
-  console.log(isAuthenticated)
+
+  // console.log(data.isAuthenticated)
 
   return (
     <>
-      {/* ---------------------------------------title div---------------------------------------- */}
-
-      {display && (
-        <Box
-          display={display ? "block" : "none"}
-          position={"absolute"}
-          top="130px"
-          zIndex={10}
-          width="100%"
-        >
-          <MobileAndTablets />
-        </Box>
-      )}
-
-      <Box bgColor={"#e42529"}>
+      <Box bgColor={"#e42529"} color="white">
         {/* -------------------------------------------------------------------------- */}
         <HStack justifyContent={"flex-end"} mr="20px">
           {/* ----------------------------------phone----------------------------------- */}
           {!isLargerThan1000 && (
-            <Box position={"absolute"} left="10px">
+            <Box position={"absolute"} left="0px">
               <PhoneNavDrawer
                 isOpen={isOpen}
                 onOpen={onOpen}
@@ -70,9 +66,15 @@ function Navbar() {
           )}
 
           <MdLocationOn />
-          <Text>Find a Store |</Text>
-          <Text>Buying Guides |</Text>
-          <Text>Contact us</Text>
+          <Text color={"white"} fontWeight="500">
+            Find a Store |
+          </Text>
+          <Text color={"white"} fontWeight="500">
+            Buying Guides |
+          </Text>
+          <Text color={"white"} fontWeight="500">
+            Contact us
+          </Text>
         </HStack>
 
         <Box pb={"3px"} width={"100%"}>
@@ -82,9 +84,12 @@ function Navbar() {
             width={"100%"}
           >
             <Box>
-              <Image src="https://www.reliancedigital.in/build/client/images/loaders/rd_logo.svg" />
+              <Image src={require("./logo.png")} width="60%" />
             </Box>
-            <Box width={"40%"} color="black">
+            <Box
+              width={{ lg: "40%", md: "100%", sm: "100%", base: "100%" }}
+              color="black"
+            >
               <Input
                 type={"text"}
                 placeholder="Find your favourite products"
@@ -97,51 +102,48 @@ function Navbar() {
             </Box>
             {isLargerThan1000 && (
               <HStack justifyContent={"flex-end"}>
-                <Text>Select your PIN Code |</Text>
+                <Text color={"white"} fontWeight="500">
+                  Select your PIN Code |
+                </Text>
                 <BsCartFill />
-                <Text>Cart |</Text>
+                <Text color={"white"} fontWeight="500">
+                  Cart |
+                </Text>
                 <CgProfile />
-                <Text>{isAuthenticated?<AfterUserLogin/>:"Login"}</Text>
+
+                <Text color={"white"} fontWeight="500">
+                  {data.isAuthenticated ? (
+                    <AfterUserLogin />
+                  ) : (
+                    <Link to="/login">
+                      <Text color={"white"} fontWeight="500">
+                        Login
+                      </Text>
+                    </Link>
+                  )}
+                </Text>
               </HStack>
             )}
           </HStack>
           {/* ------------------------------------phone------------------------------------- */}
           {!isLargerThan1000 && (
-            <HStack  justifyContent={"flex-end"} mr="20px">
-              <Text>Select your PIN Code |</Text>
+            <HStack justifyContent={"flex-end"} mr="20px">
+              <Text color={"white"} fontWeight="500">
+                Select your PIN Code |
+              </Text>
               <BsCartFill />
-              <Text>Cart |</Text>
+              <Text color={"white"} fontWeight="500">
+                Cart |
+              </Text>
               <CgProfile />
-              <Text>Login</Text>
+              <Link to="/login">
+                <Text color={"white"} fontWeight="500">
+                  Login
+                </Text>
+              </Link>
             </HStack>
           )}
         </Box>
-
-        {isLargerThan1000 && (
-          <HStack
-            gap="30px"
-            justifyContent={"space-between"}
-            // bgColor={"#003380"}
-            p="10px 40px 10px 40px"
-          >
-            
-            {/* <Text
-              // onClick={handleClick}
-              onMouseOver={() => handleMouseOver("MOBILE&TABLETS")}
-              onMouseOut={handleMouseOut}
-            >
-              MOBILES & TABLETS
-            </Text>
-            <Text>TELEVISION</Text>
-            <Text>AUDIO</Text>
-            <Text>HOME APPLIANCES</Text>
-            <Text>COMPUTERS</Text>
-            <Text>CAMERAS</Text>
-            <Text>KITCHEN APPLIANCES</Text>
-            <Text>PERSONAL CARE</Text>
-            <Text>ACCESSORIES</Text> */}
-          </HStack>
-        )}
         <Catogarybar />
       </Box>
     </>
@@ -150,25 +152,31 @@ function Navbar() {
 
 export default Navbar;
 
+// --------------------------------------------------------------------------------
 
-function AfterUserLogin(){
-  const dispatch = useDispatch()
-  const data = useSelector(store=>store.auth)
-  const [status,setStatus] = useState(false)
-const handleOpen = ()=>{
-  setStatus(!status)
-}
-const handleLogout = ()=>{
-  dispatch(logout())
-}
+function AfterUserLogin() {
+  const dispatch = useDispatch();
+  const data = useSelector((store) => store.auth);
+  const [status, setStatus] = useState(false);
+  const handleOpen = () => {
+    setStatus(!status);
+  };
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
-    <>
-    <Text onClick={handleOpen}>hi aman</Text>
-    {
-      status && <Box bgColor={"blue.500"} borderRadius="10px" position="absolute" top={"80px"} height="50px" p="20px" right={"0px"}>
-        <Text onClick={handleLogout}>LogOut</Text>
-      </Box>
-    }
-    </>
-  )
+    <Menu>
+      <MenuButton _hover={{cursor:"pointer"}} color={"white"} as={Text} rightIcon={<ChevronDownIcon />}>
+        hi Aman
+      </MenuButton>
+      <MenuList color={"black"}>
+        <MenuItem>My Profile</MenuItem>
+        <MenuItem>My Orders</MenuItem>
+        <MenuItem>My Address</MenuItem>
+        <MenuItem>My Wishlist</MenuItem>
+        <MenuItem>My Credits</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      </MenuList>
+    </Menu>
+  );
 }

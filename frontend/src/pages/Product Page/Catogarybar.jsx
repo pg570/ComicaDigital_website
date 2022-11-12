@@ -92,7 +92,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             MOBILES & TABLETS
           </Text>
@@ -124,7 +124,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             TELEVISIONS
           </Text>
@@ -156,7 +156,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             AUDIO
           </Text>
@@ -188,7 +188,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             HOME APPLIANCES
           </Text>
@@ -220,7 +220,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             COMPUTERS
           </Text>
@@ -252,7 +252,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             CAMERAS
           </Text>
@@ -284,7 +284,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             KITCHEN APPLIANCES
           </Text>
@@ -316,7 +316,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             PERSONAL CARE
           </Text>
@@ -348,7 +348,7 @@ const Catogarybar = () => {
           }}
           rightIcon={<IoIosArrowDown />}
         >
-          <Text bg={"#003380"} color={"#ffffff"} fontSize={"12px"}>
+          <Text fontWeight={"500"} bg={"#003380"} color={"#ffffff"} fontSize={"sm"}>
             {" "}
             ACCESSORIES
           </Text>
