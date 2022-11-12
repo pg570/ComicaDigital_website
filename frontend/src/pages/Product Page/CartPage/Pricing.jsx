@@ -17,8 +17,8 @@ const Pricing = () => {
   };
 
   return (
-    <Box  border={"solid 1px black"} borderRadius={"10px"} bg={"#ffffff"}  >
-    <Flex justifyContent={"center"} borderRadius={"10px"} bg={"#ffffff"}>
+    <Box  border={"solid 1px black"} borderRadius={"3px"} bg={"#ffffff"}  >
+    <Flex justifyContent={"center"} borderRadius={"3px"} bg={"#ffffff"}>
       <InputGroup mt={"10px"} w={"80%"}>
         <Input pr="4.5rem" type={"text"} placeholder="Enter Coupon Code" />
         <InputRightElement width="4.5rem">

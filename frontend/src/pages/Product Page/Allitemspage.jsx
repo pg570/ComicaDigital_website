@@ -22,6 +22,7 @@ import { useSelector } from "react-redux";
 const Allitemspage = () => {
   let [arr, setarr] = useState([]);
   let [temparr, settemparr] = useState([]);
+  const [hl,sethl] = useState()
   var { category } = useParams();
   const { Brand } = useSelector((store) => store.brand);
   console.log(Brand);
@@ -32,14 +33,15 @@ const Allitemspage = () => {
         .get(
           `https://comicadigitalbackend.up.railway.app/api/products/category/${category}`
         )
-        .then((res) => setarr(res.data));
+        .then((res) => {setarr(res.data)
+          settemparr(res.data)});
       // console.log(arr)
       // setTimeout(() => {
       //   sortfun()
       // }, 5000);
     } catch (err) {
       console.log(err.message);
-    }
+    } 
   }, []);
 
   // const sortfun=()=>{
@@ -48,18 +50,44 @@ const Allitemspage = () => {
   //   console.log(newarr);
   // }
   // useEffect(() => {
+  //   console.log("change")
   //   try {
-  //     console.log(category);
-  //     console.log(temparr);
-  //     let newarr = temparr.findIndex((obj) => obj.brand === Brand[1]) !== -1;
+  //     // console.log(category);
+  //     // console.log(temparr);
+  //     let newarr
+  //     if(hl===1){
+  //        newarr = temparr.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
 
-  //     console.log(newarr);
+  //     }else if(hl===2){
+  //       newarr = temparr.sort((a,b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0))
 
-  //     setarr(newarr);
+  //     }
+
+  //     console.log(newarr)
+
+  //     setarr(newarr)
   //   } catch (err) {
   //     console.log(err.message);
   //   }
-  // }, [temparr]);
+  // }, [hl]);
+
+  const asscending = async()=>{
+    console.log('assempsmdv')
+    
+    // // console.log(arr)
+    // let newarr =await temparr.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
+    // setarr(newarr);
+    sethl(1)
+  }
+  const decending = async()=>{
+    console.log('decending')
+    
+    // // console.log(arr)
+    // let newarr =await temparr.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
+    // setarr(newarr);
+    sethl(2)
+  }
+
   // useEffect(()=>{
   console.log(arr);
   // },[arr])
@@ -85,11 +113,11 @@ const Allitemspage = () => {
           h={"1000px"}
           justifyContent={"center"}
         >
-          <Filters />
+          <Filters  />
         </Flex>
         <Container maxW={"1096px"}>
           <Box m={"10px"}>
-            <Sortingbar />
+            <Sortingbar asscending={asscending} decending={decending} />
           </Box>
           <SimpleGrid
             columns={[1, 1, 1, 2, 3]}
@@ -104,7 +132,7 @@ const Allitemspage = () => {
                 img={data.img}
                 title={data.title}
                 rating={data.rating}
-                offer_price={data.offer_price}
+                offer_price={data.price}
                 mrp={data.offer_price}
                 discount={data.discount}
               />
