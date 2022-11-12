@@ -1,0 +1,12 @@
+li{
+    list-style:none;
+}
+
+.mobile_maindiv_A{
+    display: flex;
+}
+
+.mobile_li_A{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
