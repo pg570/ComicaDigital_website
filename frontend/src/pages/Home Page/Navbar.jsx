@@ -84,7 +84,8 @@ function Navbar() {
             width={"100%"}
           >
             <Box>
-              <Image src={require("./logo.png")} width="60%" />
+              <Link to="/homepage"> <Image _hover={{cursor:"pointer"}} src={require("./logo.png")} width="60%" /></Link>
+             
             </Box>
             <Box
               width={{ lg: "40%", md: "100%", sm: "100%", base: "100%" }}
