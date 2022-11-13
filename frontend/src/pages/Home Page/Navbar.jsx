@@ -105,10 +105,13 @@ function Navbar() {
                 <Text color={"white"} fontWeight="500">
                   Select your PIN Code |
                 </Text>
+               
                 <BsCartFill />
+                <Link to="/Cart" >
                 <Text color={"white"} fontWeight="500">
                   Cart |
                 </Text>
+                </Link>
                 <CgProfile />
 
                 <Text color={"white"} fontWeight="500">
@@ -131,10 +134,13 @@ function Navbar() {
               <Text color={"white"} fontWeight="500">
                 Select your PIN Code |
               </Text>
+              
               <BsCartFill />
+              <Link to="/Cart" >
               <Text color={"white"} fontWeight="500">
                 Cart |
               </Text>
+              </Link>
               <CgProfile />
               <Link to="/login">
                 <Text color={"white"} fontWeight="500">
