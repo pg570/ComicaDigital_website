@@ -16,21 +16,53 @@ import Tables from "./table";
 import Axios from "axios"
 import { useParams } from "react-router-dom";
 import ratingicon from "../../Assets/ratingicon.png";
+import { MultiSliderComp } from "../Home Page/SliderComp";
+import axios from "axios";
+//  import { useDispatch, useSelector } from "react-redux";
+// import { getProductsAC, getProductsheadphones, getProductsSmartPhone, getProductsTV, getProductsWashingMachine, getProductsWatches } from "../../store/product/products.action";
 
 const Detail = () => {
 
   
   const [state,setState]= useState([])
   const {id} = useParams()
+  const [post,setPost]= useState({
+    productId: id,
+    userId:"636d17107a76c29165e5ca37",
+  })
+  
 
- 
+  // const dispatch = useDispatch();
+  // const smartphone = useSelector(store=>store.productsSmartphone)
+  // const tv = useSelector(store=>store.productsTV)
+  // const washingMachine = useSelector(store=>store.productsWashingMachine)
+  // const watches = useSelector(store=>store.productsWatches)
+  // const headphones = useSelector(store=>store.productsHeadphones)
+  // const ac = useSelector(store=>store.productsAC)
+
 
   useEffect (() => {
     Axios.get(`http://comicadigitalbackend.up.railway.app/api/products/${id}`).then(res => setState(res.data)).catch(err =>console.log(err))
   
   
   }, [])
-  console.log(state)
+
+//   useEffect(()=>{
+//     dispatch(getProductsSmartPhone())
+//     dispatch(getProductsTV())
+//     dispatch(getProductsWashingMachine())
+//     dispatch(getProductsWatches())
+//     dispatch(getProductsheadphones())
+//     dispatch(getProductsAC())
+//  },[])
+// console.log(smartphone)
+
+
+async function handlePost(){
+  await axios.post("https://comicadigitalbackend.up.railway.app/api/carts", post)
+  alert("Item added into cart")
+}
+
   let val = Array.from({ length: state.rating }, (_, i) => i + 1);
   return (
     <Box>
@@ -42,6 +74,11 @@ const Detail = () => {
             w={["40%"]}
             src={state.img}
           />
+
+
+          {/* <Box>
+            <MultiSliderComp slides={smartphone.data} />
+          </Box> */}
         </Box>
 
         {/* ****1*** */}
@@ -201,7 +238,7 @@ const Detail = () => {
                   marginTop: "20px",
                 }}
               >
-                <Button id="add_cart">ADD TO CART</Button>
+                <Button onClick={handlePost} id="add_cart">ADD TO CART</Button>
                 <Button id="by_n">BUY NOW</Button>
               </Flex>
             </Box>
