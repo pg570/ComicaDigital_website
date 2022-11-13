@@ -34,10 +34,9 @@ const Allrouts = () => {
           <Route path="/nextpayment/netbanking" element={<NetBanking />} />
           <Route path="/nextpayment/wallet" element={<PricingPage />} />
           <Route path="/nextpayment/credit" element={<CreditCard />} />
-          
         </Route>
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Box>
   );

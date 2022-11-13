@@ -22,16 +22,17 @@ const ItemComponent = (props) => {
     <div bg={"#ffffff"} key={props.id}>
       <Box boxShadow="base" bg={"#ffffff"} w={"291px"}>
         <Flex justifyContent={"center"} w={"100%"}>
-          <Box>
-            <Box
-              display={"flex"}
-              justifyContent={"center"}
-              h={"210px"}
-              w={"265px"}
-            >
-              <Image h={"210px"} w={"265px"} mt={"22px"} src={props.img} />
-            </Box>
-            <Link to={`/SingleProduct/${props.id}`}>
+          <Link to={`/SingleProduct/${props.id}`}>
+            <Box>
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                h={"210px"}
+                w={"265px"}
+              >
+                <Image h={"210px"} w={"265px"} mt={"22px"} src={props.img} />
+              </Box>
+
               <Box h={"128px"} w={"265px"} mt={"15px"}>
                 <Text m={"5px"} fontSize={"15px"} color="#003380" noOfLines={2}>
                   {props.title}
@@ -65,8 +66,8 @@ const ItemComponent = (props) => {
                   </Box>
                 </Box>
               </Box>
-            </Link>
-          </Box>
+            </Box>
+          </Link>
         </Flex>
         <Box borderStyle={"groove"} color={"#666666"} display={"flex"}>
           <Button w={"50%"} boxShadow="base" colorScheme={"#ffffff"}>
