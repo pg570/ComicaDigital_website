@@ -25,7 +25,8 @@ const Paymentform = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if(name=== "mobile" || name === "pincode"){
+    if(name=== "mobile" || name === "pincode")
+    {
       setInvoice({
         ...invoice,
         [name]: +value,
