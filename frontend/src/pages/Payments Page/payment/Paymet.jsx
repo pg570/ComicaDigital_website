@@ -46,13 +46,14 @@ const Paymets = ({handleChange,handleSubmit}) => {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-             <Input  onChange={(e)=>handleChange(e)} name="pincode"  ref={initialRef} placeholder='Pin Code' />
+             <Input type="number" onChange={(e)=>handleChange(e)} name="pincode"  ref={initialRef} placeholder='Pin Code' />
             </FormControl>
 
             <FormControl mt={4}>
             
               <Flex sx={{gap:"6px"}}>
               <Input onChange={(e)=>handleChange(e)} name="firstname" placeholder='First name' />
+             
               <Input onChange={(e)=>handleChange(e)} name="lastname" placeholder='Last name' />
               </Flex>
              
@@ -85,7 +86,7 @@ const Paymets = ({handleChange,handleSubmit}) => {
           <FormControl mt={4}>
             
             <Flex sx={{gap:"6px"}}>
-            <Input onChange={(e)=>handleChange(e)} name="mobile" placeholder='Enter Mobile Number' />
+            <Input type="number"  onChange={(e)=>handleChange(e)} name="mobile" placeholder='Enter Mobile Number' />
             <Input placeholder='Enter Landline Number' />
             </Flex>
            

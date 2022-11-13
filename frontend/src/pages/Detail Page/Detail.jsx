@@ -10,11 +10,28 @@ import {
   StylesProvider,
   SimpleGrid,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./detail.css";
 import Tables from "./table";
+import Axios from "axios"
+import { useParams } from "react-router-dom";
+import ratingicon from "../../Assets/ratingicon.png";
 
 const Detail = () => {
+
+  
+  const [state,setState]= useState([])
+  const {id} = useParams()
+
+ 
+
+  useEffect (() => {
+    Axios.get(`http://comicadigitalbackend.up.railway.app/api/products/${id}`).then(res => setState(res.data)).catch(err =>console.log(err))
+  
+  
+  }, [])
+  console.log(state)
+  let val = Array.from({ length: state.rating }, (_, i) => i + 1);
   return (
     <Box>
       <Box className="dev">
@@ -23,17 +40,22 @@ const Detail = () => {
           <Image
             class="qimg"
             w={["40%"]}
-            src="https://www.reliancedigital.in/medias/boAt-Stone-Grenade-Speaker-491893336-i-1-1200Wx1200H?context=bWFzdGVyfGltYWdlc3w1MzI1MDl8aW1hZ2UvcG5nfGltYWdlcy9oMWYvaDI0Lzk3NzUyNzYwNjQ3OTgucG5nfDE1M2UxZjljY2Y2MDFmYWM4NGU1ZTUzNTdmMTQxOGIzNjExNzllY2MzODEzODBlNDMzOGMyYWE1OTMzYjFhMDg"
+            src={state.img}
           />
         </Box>
 
         {/* ****1*** */}
         <Box className="boat">
           <h3>
-            boAt Stone Grenade 5W Portable Wireless Speaker With Multiple
-            Connectivity Modes, Up to 7H Playback, IPX6 Water and Splash
-            Resistance and Rugged Shock Resistant Design, Black
+            {state.title}
+          
           </h3>
+          <Box m={"5px"} display={"flex"}>
+            {val.map((e) => {
+              return <Image h={"18px"} w={"18px"} src={ratingicon} />;
+            })}
+            <Text fontSize={"14px"}>(1 Reviews)</Text>
+          </Box>
           <span class="TextWeb__Text-sc-1cyx778-0 StarRating__StarRatingOuter-sc-1mfqajc-0 bpqZol eOeJGd">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -139,14 +161,14 @@ const Detail = () => {
                 <h4 className="rajawat_p">Deal Price :</h4>
                 <span class="pdp__offerPrice">
                   <span>₹</span>
-                  <span>24,990.00</span>
+                  <span>{state.price}.00</span>
                 </span>
               </Flex>
               <Flex sx={{ gap: "3px" }}>
                 <h4>Offer Price: </h4>
                 <span class="odd">
                   <span>₹</span>
-                  <span>28,990.00</span>
+                  <span>{state.offer_price}.00 </span>
                 </span>
               </Flex>
 
@@ -154,15 +176,15 @@ const Detail = () => {
                 <h4>MRP : </h4>
                 <span class="odd">
                   <span>₹</span>
-                  <span>70,990.00</span>
+                  <span>{state.mrp}.00</span>
                 </span>
               </Flex>
               <li class="pdp__priceSection__priceListText pdp__savePrice">
-                You Save: 65%(₹46,000)
+                You Save: ₹{state.mrp-state.price}
               </li>
 
               <li class="pdp__priceSection__priceListText_r">
-                EMIs (Credit Cards) from ₹1199.84/month |{" "}
+                EMIs (Credit Cards) from ₹{Math.ceil(state.price/12)}/month |{" "}
                 <span class="pdp__emiLinkTextStyle">View Plans</span>
               </li>
 

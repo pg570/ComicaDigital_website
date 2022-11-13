@@ -1,5 +1,5 @@
 import { Box, Text, Button, Flex, Heading, Checkbox } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   List,
   ListItem,
@@ -11,24 +11,68 @@ import {
   RadioGroup,
 } from "@chakra-ui/react";
 
-import { CheckCircleIcon } from "@chakra-ui/icons";
-import { Select } from "@chakra-ui/react";
-import { useContext } from "react";
-import { useBoolean } from "@chakra-ui/react";
-import { AppProvider } from "../context/Context";
+// import { CheckCircleIcon } from "@chakra-ui/icons";
+// import { Select } from "@chakra-ui/react";
+// import { useContext } from "react";
+// import { useBoolean } from "@chakra-ui/react";
+// import { AppProvider } from "../context/Context";
 import { Link } from "react-router-dom";
 import PaymetRoutes from "../PayRoutes/PaymetRoutes";
-import CreditCard from "../PayRoutes/AllpaymentGateway/CreditCard";
-import NetBanking from "../PayRoutes/AllpaymentGateway/NetBanking";
-import Upi from "../PayRoutes/AllpaymentGateway/Upi";
+
+import axios from "axios";
 
 const Nextpayment = () => {
-  const { data } = useContext(AppProvider);
-  console.log(data, "me data hu");
-  const [flag, setFlag] = useBoolean();
+  // const { data } = useContext(AppProvider);
+  // console.log(data, "me data hu");
+ 
+  const [address, setAddress] = useState([]);
+  const [product, setProduct] = useState([]);
+
+
+  async function getProduct(){
+    
+    try {
+      let res = await axios.get("https://comicadigitalbackend.up.railway.app/api/products/category/636d17107a76c29165e5ca37");
+
+      // console.log(res.data);
+       setProduct(res.data);
+      // setData(res.data);
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+  getProduct()
+  console.log(product)
+
+
+
+  
+  async function getData(){
+    
+    try {
+      let res = await axios.get("https://comicadigitalbackend.up.railway.app/api/addresses/userId/636d17107a76c29165e5ca37");
+
+      // console.log(res.data);
+       setAddress(res.data);
+      // setData(res.data);
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
+
+
+  useEffect(() => {
+    getData()
+
+  }, [address]);
   return (
     <Box sx={{ backgroundColor: "#f5f7f7", height: "auto", padding: "70px" }}>
-      <Box
+     {
+      address.map((data)=>{
+        return(
+          <>
+           <Box
         sx={{
           width: "95%",
           height: "auto",
@@ -75,6 +119,10 @@ const Nextpayment = () => {
         <br />
         <br />
       </Box>
+          </>
+        )
+      })
+     }
       <br />
       <Box
         sx={{
@@ -88,37 +136,39 @@ const Nextpayment = () => {
           margin: "auto",
         }}
       >
-        <Flex>
+        <Flex >
           <Checkbox size="xl" colorScheme="blue" defaultChecked>
             <h4>ORDER DETAILS</h4>
           </Checkbox>
         </Flex>
 
+
+        <div className="pr_diff">
+          <Flex >
+<Box> <div class="swag_priya">
+             Hammer Sting 3 Bluetooth Wireless Neckband Earphone With Sweat-Proof And Deep Bass, Black Red With 1 Year Warranty
+          </div></Box>
+         
+         
+          <Box></Box>
+          <div className="pr_diffs">
+          <div class="swag_priya">Qty:1</div>
+          </div>
+          
+          <div className="pr_diffs">
+          <div class="swag_priya">Price:1</div>
+</div>
+       
+          </Flex>
+        </div>
+
         <br />
 
-        <h6 class="owl_schl">Priya Rajawat</h6>
+       
 
-        <Text
-          sx={{
-            marginLeft: "13px",
-            color: "black",
-            fontSize: "15px",
-            paddingTop: "5px",
-          }}
-        >
-          123,address,city,city-pincode,state
-        </Text>
+      
 
-        <Text
-          sx={{
-            marginLeft: "13px",
-            color: "black",
-            fontSize: "15px",
-            paddingTop: "5px",
-          }}
-        >
-          <b id="spcl_b">Mobile : </b>1234567890
-        </Text>
+      
         <br />
         <br />
       </Box>
