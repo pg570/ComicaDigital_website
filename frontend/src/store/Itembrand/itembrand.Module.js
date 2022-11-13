@@ -1,5 +1,7 @@
 
 
+
+
 export const Itembrandfun = (name) => async (dispatch) => {
     console.log(name)
 
@@ -7,3 +9,8 @@ export const Itembrandfun = (name) => async (dispatch) => {
     dispatch({ type: "Item_Brand", payload: name });
   // dispatch()
   };
+
+  export const Itembrandfundel=(name)=>async(dispatch)=>{
+
+    dispatch({type:"Brand_remove",payload:name})
+  }
