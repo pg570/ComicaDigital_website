@@ -27,9 +27,6 @@ export const signUpAPI = (userData) => async (dispatch) => {
     dispatch({
       type: AUTH_SIGN_UP_ERROR
     });
-    console.log(e.message)
-    return 
-    // console.log(e.message);
   }
 };
 
@@ -48,7 +45,6 @@ export const loginAPI = (creds) => async (dispatch) => {
     dispatch({
       type: AUTH_SIGN_IN_ERROR,
     });
-    return "user is not there"
   }
 };
 

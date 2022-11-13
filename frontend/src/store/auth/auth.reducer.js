@@ -14,29 +14,32 @@ export const authReducer = (state = authInitalState,{type,payload}) => {
   switch(type){
     case AUTH_SIGN_UP_SUCCESS:{
       // localStorage.setItem("token",payload.token)
-      console.log(payload)
       return{
         ...state,
         data:{
-          isAuthenticated:true,
-          token:payload.token
-        }
+          isAuthenticated:false,
+          token:"",
+        },
+        error:false,
+        loading:false
       } 
     }
     case AUTH_SIGN_UP_LOADING:{
       return {
         ...state,
-        loading:true
+        loading:true,
+        error:false
       }
     }
     case AUTH_SIGN_UP_ERROR:{
       return {
         ...state,
-        error:true
+        error:true,
+        loading:false,
       }
     }
     case AUTH_SIGN_IN_SUCCESS:{
-      localStorage.setItem("token",payload.token)
+      // localStorage.setItem("token",payload.token)
       return{
         ...state,
         data:{

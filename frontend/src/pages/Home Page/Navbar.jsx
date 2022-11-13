@@ -84,8 +84,14 @@ function Navbar() {
             width={"100%"}
           >
             <Box>
-              <Link to="/homepage"> <Image _hover={{cursor:"pointer"}} src={require("./logo.png")} width="60%" /></Link>
-             
+              <Link to="/">
+                {" "}
+                <Image
+                  _hover={{ cursor: "pointer" }}
+                  src={require("./logo.png")}
+                  width="60%"
+                />
+              </Link>
             </Box>
             <Box
               width={{ lg: "40%", md: "100%", sm: "100%", base: "100%" }}
@@ -106,12 +112,12 @@ function Navbar() {
                 <Text color={"white"} fontWeight="500">
                   Select your PIN Code |
                 </Text>
-               
+
                 <BsCartFill />
-                <Link to="/Cart" >
-                <Text color={"white"} fontWeight="500">
-                  Cart |
-                </Text>
+                <Link to="/Cart">
+                  <Text color={"white"} fontWeight="500">
+                    Cart |
+                  </Text>
                 </Link>
                 <CgProfile />
 
@@ -135,12 +141,12 @@ function Navbar() {
               <Text color={"white"} fontWeight="500">
                 Select your PIN Code |
               </Text>
-              
+
               <BsCartFill />
-              <Link to="/Cart" >
-              <Text color={"white"} fontWeight="500">
-                Cart |
-              </Text>
+              <Link to="/Cart">
+                <Text color={"white"} fontWeight="500">
+                  Cart |
+                </Text>
               </Link>
               <CgProfile />
               <Link to="/login">
@@ -173,7 +179,12 @@ function AfterUserLogin() {
   };
   return (
     <Menu>
-      <MenuButton _hover={{cursor:"pointer"}} color={"white"} as={Text} rightIcon={<ChevronDownIcon />}>
+      <MenuButton
+        _hover={{ cursor: "pointer" }}
+        color={"white"}
+        as={Text}
+        rightIcon={<ChevronDownIcon />}
+      >
         hi Aman
       </MenuButton>
       <MenuList color={"black"}>

@@ -45,20 +45,25 @@ export function MultiSliderComp({ slides }) {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+  // console.log(slides[0])
   return (
     <Box mb="50px">
       <HStack justifyContent={"flex-start"} alignItems="center" gap="20px">
         <Heading textAlign={"left"} ml="30px" mb="20px" fontSize={"xl"}>
-          BEST SELLERS FROM {slides[0].category}
+          BEST SELLERS FROM
         </Heading>
-        <Link to={`Allitems/${slides.category}`}>
+        <Link to={`Allitems/`}>
           <Button colorScheme={"blue"}>View All</Button>
         </Link>
       </HStack>
       <Slider {...settings}>
         {slides.map((el, i) => {
           return (
-            <Box key={i} height={{ lg: "300px", sm: "200px", base: "100px" }}>
+            <Box
+              key={i}
+              height={{ lg: "350px", sm: "200px", base: "100px" }}
+              boxShadow="rgba(0, 0, 0, 0.05) 0px 0px 0px 1px"
+            >
               <MultiSliderCart data={{ ...el }} />
             </Box>
           );
@@ -81,12 +86,12 @@ export function MultiSliderAllItemsComp({ slides }) {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-  console.log(slides[0].category);
+  // console.log(slides[0].category);
   return (
     <>
       <Box>
-        <Heading color={"blue"} fontSize={"xl"}>
-          BEST SELLERS FROM{" "}
+        <Heading textAlign={"left"} ml="30px" mb="20px" fontSize={"xl"}>
+          BEST SELLERS FROM
         </Heading>
         <Slider {...settings}>
           {slides.map((el, i) => {

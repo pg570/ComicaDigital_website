@@ -71,7 +71,7 @@ function Container() {
      dispatch(getProductsAC())
   },[])
 
-  
+  // console.log(smartphone)
   return (
     <>
     <Box width={"100%"}>
@@ -93,15 +93,7 @@ function Container() {
         <Box>
           <MultiSliderComp slides={washingMachine.data}  />
         </Box>
-        <Box>
-          <MultiSliderComp slides={watches.data} />
-        </Box>
-        <Box>
-          <MultiSliderComp slides={headphones.data} />
-        </Box>
-        <Box>
-          <MultiSliderComp slides={ac.data} />
-        </Box>
+        
         <Box>
           <Heading textAlign={"left"} fontSize="xl" p="30px">GREAT DEALS ON ELECTRONICS</Heading>
           <Grid templateColumns={{lg:'repeat(4, 1fr)',sm:'repeat(2, 1fr)'}} gap={6}>
@@ -130,6 +122,15 @@ function Container() {
               <Image src="https://www.reliancedigital.in/medias/Winter-Appliances-Small-banners.jpg?context=bWFzdGVyfGltYWdlc3w2ODA0M3xpbWFnZS9qcGVnfGltYWdlcy9oYTUvaDhmLzk5MTM3NzczMjQwNjIuanBnfDdjMTE5YzUzNjcyODZiNDljNGJlNDMzZTNkNGI5Nzg2ZjlhOTg0YmFhYTViOTZmOTFkNmY1MWRlZGQ4NWY5ZDY"/>
             </GridItem>
           </Grid>
+        </Box>
+        <Box>
+          <MultiSliderComp slides={watches.data} />
+        </Box>
+        <Box>
+          <MultiSliderComp slides={headphones.data} />
+        </Box>
+        <Box>
+          <MultiSliderComp slides={ac.data} />
         </Box>
         <Box bgColor={"#f7f7f7"}>
           <Box p="20px 30px">
