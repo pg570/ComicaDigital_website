@@ -18,7 +18,7 @@ const Allrouts = () => {
     <Box>
       
       <Routes>
-        <Route path={"/homepage"} element={<MainPage />} />
+        <Route path={"/"} element={<MainPage />} />
         <Route path={"/Allitems/:category"} element={<Allitemspage />} />
         <Route path="/SingleProduct/:id" element={<Detail />} />
         <Route path="/Cart" element={<CartPage />} />

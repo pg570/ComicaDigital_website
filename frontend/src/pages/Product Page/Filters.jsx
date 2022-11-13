@@ -41,7 +41,7 @@ const Filters = () => {
     try {
       axios
         .get(
-          `https://comicadigitalbackend.up.railway.app/api/products/category/${category}`
+          `https://comicadigitalbackend.up.railway.app/api/products?search=${category}`
         )
         .then((res) => settemparr(res.data));
       // console.log(arr)
@@ -185,7 +185,6 @@ const Filters = () => {
           {arr.map((e) => (
             <CheckBoxComp brand={e.brand} />
           ))}
-          <Checkbox> boAt</Checkbox>
         </Stack>
       </Box>
     </Box>
