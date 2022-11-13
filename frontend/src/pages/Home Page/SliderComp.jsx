@@ -45,12 +45,12 @@ export function MultiSliderComp({ slides }) {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-  // console.log(slides[0])
+  // console.log(slides[0].category)
   return (
     <Box mb="50px">
       <HStack justifyContent={"flex-start"} alignItems="center" gap="20px">
         <Heading textAlign={"left"} ml="30px" mb="20px" fontSize={"xl"}>
-          BEST SELLERS FROM
+          BEST SELLERS FROM 
         </Heading>
         <Link to={`Allitems/`}>
           <Button colorScheme={"blue"}>View All</Button>

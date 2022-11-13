@@ -171,12 +171,21 @@ function AfterUserLogin() {
   const dispatch = useDispatch();
   const data = useSelector((store) => store.auth);
   const [status, setStatus] = useState(false);
+  const [items, setItems] = useState({});
   const handleOpen = () => {
     setStatus(!status);
   };
   const handleLogout = () => {
     dispatch(logout());
   };
+
+useEffect(() => {
+  const items = JSON.parse(localStorage.getItem('userDetails'));
+  if (items) {
+   setItems(items);
+  }
+}, []);
+// console.log(items)
   return (
     <Menu>
       <MenuButton
@@ -185,7 +194,7 @@ function AfterUserLogin() {
         as={Text}
         rightIcon={<ChevronDownIcon />}
       >
-        hi Aman
+        Hi {items.userName}
       </MenuButton>
       <MenuList color={"black"}>
         <MenuItem>My Profile</MenuItem>

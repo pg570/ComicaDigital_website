@@ -36,6 +36,7 @@ export const loginAPI = (creds) => async (dispatch) => {
   });
   try {
     const response = await axios.post("https://comicadigitalbackend.up.railway.app/api/users/login", creds);
+    // console.log(response.data)
     dispatch({
       type: AUTH_SIGN_IN_SUCCESS,
       payload: response.data,
@@ -45,6 +46,7 @@ export const loginAPI = (creds) => async (dispatch) => {
     dispatch({
       type: AUTH_SIGN_IN_ERROR,
     });
+    // console.log(e.message)
   }
 };
 

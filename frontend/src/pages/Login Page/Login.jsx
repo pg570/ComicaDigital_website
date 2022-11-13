@@ -65,8 +65,8 @@ function Login() {
         isClosable: true,
         position: "bottom",
       });
-      // navigate("/homepage");
-      console.log("homepage")
+      navigate("/");
+      // console.log("homepage")
     }
     if (error) {
       toast({
@@ -79,7 +79,7 @@ function Login() {
     }
   }, [data.isAuthenticated, error]);
 
-  console.log(data, error, loading);
+  // console.log(data, error, loading);
 
   return (
     <>

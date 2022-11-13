@@ -14,7 +14,7 @@ export function MultiSliderCart({ data }) {
           pl="20px"
           gap="10px"
         >
-          <Image src={data.img} height="50%" width={"60%"} />
+          <Image src={data.img} height="50%" width={"60%"} margin="auto" />
           <Text color={"blue"}>{data.title}</Text>
           <VStack justifyContent="center"
           alignItems={"flex-start"} lineHeight="10px">
