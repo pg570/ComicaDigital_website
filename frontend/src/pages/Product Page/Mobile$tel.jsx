@@ -45,7 +45,7 @@ const Mobile$tel = (
             fontSize={"14px"}
             color={"#ffffff"}
           >
-          <Link to={"/Allitems/:Boat New Launch"} >
+          <Link to={"/Allitems/watch"} >
             Boat New Launch</Link>
           </Text>
         </Stack>
@@ -72,7 +72,7 @@ const Mobile$tel = (
             fontSize={"14px"}
             color={"#ffffff"}
           >
-          <Link to={"/Allitems/smartphone"}>
+          <Link to={"/Allitems/mobile"}>
             Mobile_Accessories</Link>
           </Text>
           <Text
@@ -117,7 +117,8 @@ const Mobile$tel = (
           fontSize={"14px"}
           color={"#ffffff"}
         >
-          Headphones & Headsets
+        <Link to={"/Allitems/ear"}>
+          Headphones & Headsets</Link>
         </Heading>
 
         <Stack m={"3px"}>

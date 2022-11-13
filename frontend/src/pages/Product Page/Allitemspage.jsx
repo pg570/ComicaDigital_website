@@ -22,8 +22,10 @@ import { useSelector } from "react-redux";
 const Allitemspage = () => {
   let [arr, setarr] = useState([]);
   let [temparr, settemparr] = useState([]);
-  const [hl,sethl] = useState()
+  const [categoryval,setcategory]=useState()
+  const [sort,setsort] = useState("")
   var { category } = useParams();
+
   const { Brand } = useSelector((store) => store.brand);
   console.log(Brand);
   useEffect(() => {
@@ -31,76 +33,27 @@ const Allitemspage = () => {
     try {
       axios
         .get(
-          `https://comicadigitalbackend.up.railway.app/api/products/category/${category}`
+          `https://comicadigitalbackend.up.railway.app/api/products?search=${category}${sort}`
         )
         .then((res) => {setarr(res.data)
-          settemparr(res.data)});
-      // console.log(arr)
-      // setTimeout(() => {
-      //   sortfun()
-      // }, 5000);
+        });
+
     } catch (err) {
       console.log(err.message);
     } 
-  }, []);
+  }, [category,sort]);
 
-  // const sortfun=()=>{
-  //       let newarr = arr.filter((word) => word.category === category);
-
-  //   console.log(newarr);
-  // }
-  // useEffect(() => {
-  //   console.log("change")
-  //   try {
-  //     // console.log(category);
-  //     // console.log(temparr);
-  //     let newarr
-  //     if(hl===1){
-  //        newarr = temparr.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
-
-  //     }else if(hl===2){
-  //       newarr = temparr.sort((a,b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0))
-
-  //     }
-
-  //     console.log(newarr)
-
-  //     setarr(newarr)
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // }, [hl]);
 
   const asscending = async()=>{
-    console.log('assempsmdv')
-    
-    // // console.log(arr)
-    // let newarr =await temparr.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
-    // setarr(newarr);
-    sethl(1)
+ setsort("&sort=offer_price,asc")
+  
   }
   const decending = async()=>{
-    console.log('decending')
-    
-    // // console.log(arr)
-    // let newarr =await temparr.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
-    // setarr(newarr);
-    sethl(2)
+    setsort("&sort=offer_price")
+ 
   }
 
-  // useEffect(()=>{
-  console.log(arr);
-  // },[arr])
-  // brand: "boAt";
-  // category: "headphones";
-  // img: "https://www.reliancedigital.in/medias/boAt-Airdopes-138-Airdopes-491973383-i-1-1200Wx1200H?context=bWFzdGVyfGltYWdlc3wyMTAwMnxpbWFnZS9qcGVnfGltYWdlcy9oYmUvaGYwLzk5MDQ0ODY0ODE5NTAuanBnfDMwOTI2ZGM0NzA3ZmFmMWY3YzI4MjA1MDQ3NmFiOTM3Njk0ZTUyMGMyMWJlZTM4Y2QwYmQ0MGM4OTBjMjAzZmU";
-  // mrp: 4490;
-  // offer_price: 1349;
-  // price: 1199;
-  // rating: 4;
-  // title: "boAt Airdopes 138 Twin Wireless Earbuds with IWP Technology, Bluetooth V5.0, Immersive Audio, Up to 15H Total Playback, Instant Voice Assistant and Type-C Charging, Steel Blue";
-  // __v: 0;
-  // _id: "636e462decbfae605af10e5e";
+
 
   return (
     <Container mt={"10px"} maxW={"100%"}>
