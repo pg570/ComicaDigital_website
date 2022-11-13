@@ -11,6 +11,11 @@ import { Link } from "react-router-dom";
 const Paymentform = () => {
   // const { setData } = useContext(AppProvider);
   const [payme, setPayme] = useState([]);
+  
+
+  const user = JSON.parse(localStorage.getItem('userDetails'));
+
+  
   const [invoice, setInvoice] = useState({
     pincode: 0,
     firstname: "",
@@ -19,7 +24,7 @@ const Paymentform = () => {
     city: "",
     state: "",
     mobile: 0,
-    userId:"636d17107a76c29165e5ca37",
+    userId:user.userId,
   });
   const [address, setAddress] = useState([]);
 
@@ -66,7 +71,7 @@ const Paymentform = () => {
   async function getData(){
     
     try {
-      let res = await axios.get("https://comicadigitalbackend.up.railway.app/api/addresses/userId/636d17107a76c29165e5ca37");
+      let res = await axios.get(`https://comicadigitalbackend.up.railway.app/api/addresses/userId/${user.userId}`);
 
       // console.log(res.data);
        setAddress(res.data);

@@ -23,8 +23,12 @@ const CartPage = () => {
 
 const [arr,setarr]=useState([])
 const [render,setrender] = useState(true)
+
+
+const user = JSON.parse(localStorage.getItem('userDetails'));
+
   useEffect(()=>{
-    axios.get(`https://comicadigitalbackend.up.railway.app/api/carts/636d17107a76c29165e5ca37`).then((res)=>setarr(res.data))
+    axios.get(`https://comicadigitalbackend.up.railway.app/api/carts/${user.userId}`).then((res)=>setarr(res.data))
   },[render])
   console.log(render)
 

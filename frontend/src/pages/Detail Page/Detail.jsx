@@ -26,11 +26,18 @@ const Detail = () => {
   
   const [state,setState]= useState([])
   const {id} = useParams()
+  // const [user,setuser]= useState({})
+
+
+    const user = JSON.parse(localStorage.getItem('userDetails'));
+    // console.log(items)
+   
+  console.log(typeof(user.userId))
   const [post,setPost]= useState({
     productId: id,
-    userId:"636d17107a76c29165e5ca37",
+    userId:user.userId,
   })
-  
+  console.log(post)
 
   // const dispatch = useDispatch();
   // const smartphone = useSelector(store=>store.productsSmartphone)

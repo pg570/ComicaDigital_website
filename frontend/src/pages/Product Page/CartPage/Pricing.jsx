@@ -23,11 +23,14 @@ const Pricing = ({render}) => {
     fetchproducts();
 
   }, [render]);
+  
+  const user = JSON.parse(localStorage.getItem('userDetails'));
+
 
   const fetchproducts = async () => {
     await axios
       .get(
-        `https://comicadigitalbackend.up.railway.app/api/carts/636d17107a76c29165e5ca37`
+        `https://comicadigitalbackend.up.railway.app/api/carts/${user.userId}`
       )
       .then((res) => {
         setarr(res.data);

@@ -8,6 +8,7 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
 } from '@chakra-ui/react'
+import { Link } from "react-router-dom";
 
 const BuyNowPayLater = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -76,9 +77,11 @@ const BuyNowPayLater = () => {
 
           <AlertDialogFooter>
             
-            <Button ref={cancelRef} colorScheme='red' onClick={onClose} ml={3}>
-            OK
-            </Button>
+          <Link to="/">
+          <Button ref={cancelRef} colorScheme='red' onClick={onClose} ml={3}>
+          
+          OK
+          </Button> </Link>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialogOverlay>

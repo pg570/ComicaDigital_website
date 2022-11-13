@@ -30,12 +30,14 @@ const Nextpayment = () => {
   const [product, setProduct] = useState([]);
   const [productId, setProductId] = useState("");
   const [detail, setDetail] = useState({});
+  
 
+  const user = JSON.parse(localStorage.getItem('userDetails'));
 
   async function getProduct(){
     
     try {
-      let res = await axios.get("https://comicadigitalbackend.up.railway.app/api/carts/636d17107a76c29165e5ca37");
+      let res = await axios.get(`https://comicadigitalbackend.up.railway.app/api/carts/${user.userId}`);
 
       // console.log(res.data);
        setProduct(res.data);
@@ -66,7 +68,7 @@ const Nextpayment = () => {
   async function getData(){
     
     try {
-      let res = await axios.get("https://comicadigitalbackend.up.railway.app/api/addresses/userId/636d17107a76c29165e5ca37");
+      let res = await axios.get(`https://comicadigitalbackend.up.railway.app/api/addresses/userId/${user.userId}`);
 
       // console.log(res.data);
        setAddress(res.data);
