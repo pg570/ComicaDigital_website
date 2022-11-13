@@ -54,8 +54,6 @@ function Login() {
 
   const handleSubmit = () => {
     dispatch(loginAPI(formState));
-    if (data.isAuthenticated) {
-    }
   };
 
   useEffect(() => {
@@ -67,8 +65,8 @@ function Login() {
         isClosable: true,
         position: "bottom",
       });
-      navigate("/homepage");
-      // console.log("homepage")
+      // navigate("/homepage");
+      console.log("homepage")
     }
     if (error) {
       toast({

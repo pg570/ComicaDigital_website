@@ -66,7 +66,7 @@ const Catogarybar = () => {
 
   return (
     <Flex
-      mt={"-10px"}
+      mt={"0px"}
       bg={"#003380"}
       display={{
         base: "none",
