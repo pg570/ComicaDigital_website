@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import PaymetRoutes from "../PayRoutes/PaymetRoutes";
 
 import axios from "axios";
+import GetProductDetail from "./GetProductDetail";
 
 const Nextpayment = () => {
   // const { data } = useContext(AppProvider);
@@ -27,22 +28,37 @@ const Nextpayment = () => {
  
   const [address, setAddress] = useState([]);
   const [product, setProduct] = useState([]);
+  const [productId, setProductId] = useState("");
+  const [detail, setDetail] = useState({});
 
 
   async function getProduct(){
     
     try {
-      let res = await axios.get("https://comicadigitalbackend.up.railway.app/api/products/category/636d17107a76c29165e5ca37");
+      let res = await axios.get("https://comicadigitalbackend.up.railway.app/api/carts/636d17107a76c29165e5ca37");
 
       // console.log(res.data);
        setProduct(res.data);
-      // setData(res.data);
+      // setProductId(res.data.productId)
     } catch (e) {
       console.log(e.message);
     }
   }
-  getProduct()
-  console.log(product)
+
+
+
+  // async function getDetailId(id){
+  //   try {
+  //     let res = await axios.get(`https://comicadigitalbackend.up.railway.app/api/products/${id}`);
+  //     console.log(res.data)
+  //     //  setDetail(res.data);
+     
+  //   } catch (e) {
+  //     console.log(e.message);
+  //   }
+  // }
+
+ 
 
 
 
@@ -54,7 +70,7 @@ const Nextpayment = () => {
 
       // console.log(res.data);
        setAddress(res.data);
-      // setData(res.data);
+    
     } catch (e) {
       console.log(e.message);
     }
@@ -66,6 +82,16 @@ const Nextpayment = () => {
     getData()
 
   }, [address]);
+
+  useEffect(() => {
+   
+    getProduct()
+  }, [product]);
+
+
+
+
+
   return (
     <Box sx={{ backgroundColor: "#f5f7f7", height: "auto", padding: "70px" }}>
      {
@@ -79,7 +105,7 @@ const Nextpayment = () => {
           borderRadius: "8px",
           backgroundColor: "#e7e9e9",
           border: "1px solid #dddddd",
-          padding: "20px",
+          padding: "10px 20px",
           textAlign: "start",
           margin: "auto",
         }}
@@ -98,9 +124,11 @@ const Nextpayment = () => {
         <Text
           sx={{
             marginLeft: "13px",
-            color: "black",
-            fontSize: "15px",
+            color: "rgb(51, 51, 51)",
+            fontSize: "13px",
+            fontWeight:"600",
             paddingTop: "5px",
+            fontWeight:"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
           }}
         >
           {data.address}, {data.city}, {data.city}-{data.pincode}, {data.state}
@@ -109,9 +137,11 @@ const Nextpayment = () => {
         <Text
           sx={{
             marginLeft: "13px",
-            color: "black",
-            fontSize: "15px",
+            color: "rgb(51, 51, 51)",
+            fontSize: "13px",
+            fontWeight:"600",
             paddingTop: "5px",
+            fontWeight:"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
           }}
         >
           <b id="spcl_b">Mobile : </b> {data.mobile}{" "}
@@ -143,26 +173,20 @@ const Nextpayment = () => {
         </Flex>
 
 
-        <div className="pr_diff">
-          <Flex >
-<Box> <div class="swag_priya">
-             Hammer Sting 3 Bluetooth Wireless Neckband Earphone With Sweat-Proof And Deep Bass, Black Red With 1 Year Warranty
-          </div></Box>
-         
-         
-          <Box></Box>
-          <div className="pr_diffs">
-          <div class="swag_priya">Qty:1</div>
-          </div>
-          
-          <div className="pr_diffs">
-          <div class="swag_priya">Price:1</div>
-</div>
-       
-          </Flex>
-        </div>
-
         <br />
+        {
+          product?.map((el)=>{
+           
+            return(
+              
+             
+                 <GetProductDetail id={el.productId} qty={el.qty}/>
+             
+                 
+
+            )
+          })
+        }
 
        
 

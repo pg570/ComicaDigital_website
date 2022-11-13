@@ -57,7 +57,7 @@ const BuyNowPayLater = () => {
 
         
 <Box>
-<Button  onClick={onOpen} class="p_riya">Pay Rs. 2000 </Button>
+<Button  onClick={onOpen} class="p_riya">Pay Now </Button>
 
 <AlertDialog
       isOpen={isOpen}
@@ -67,7 +67,7 @@ const BuyNowPayLater = () => {
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-           Payment Successfull Rs 2000
+           Payment Successfull 
           </AlertDialogHeader>
 
           <AlertDialogBody>
