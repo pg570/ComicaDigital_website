@@ -9,25 +9,35 @@ import { useContext } from "react";
 import { AppProvider } from "./context/Context";
 import { Link } from "react-router-dom";
 const Paymentform = () => {
-  const { setData } = useContext(AppProvider);
+  // const { setData } = useContext(AppProvider);
   const [payme, setPayme] = useState([]);
   const [invoice, setInvoice] = useState({
-    pincode: "",
+    pincode: 0,
     firstname: "",
     lastname: "",
     address: "",
     city: "",
     state: "",
-    mobile: "",
+    mobile: 0,
+    userId:"636d17107a76c29165e5ca37",
   });
   const [address, setAddress] = useState([]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setInvoice({
-      ...invoice,
-      [name]: value,
-    });
+    if(name=== "mobile" || name === "pincode")
+    {
+      setInvoice({
+        ...invoice,
+        [name]: +value,
+      });
+    }else{
+
+      setInvoice({
+        ...invoice,
+        [name]: value,
+      });
+    }
   };
 
   const handleEditChange = (event) => {
@@ -38,27 +48,47 @@ const Paymentform = () => {
     });
   };
 
+
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(invoice);
+  
     try {
-      let res = await axios.post("http://localhost:8080/payment", invoice);
-      console.log(res.data);
-      setAddress(res.data);
-      setData(res.data);
+      let res = await axios.post("https://comicadigitalbackend.up.railway.app/api/addresses", invoice);
+
+    
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+  // console.log(invoice);
+
+
+  async function getData(){
+    
+    try {
+      let res = await axios.get("https://comicadigitalbackend.up.railway.app/api/addresses/userId/636d17107a76c29165e5ca37");
+
+      // console.log(res.data);
+       setAddress(res.data);
+      // setData(res.data);
     } catch (e) {
       console.log(e.message);
     }
   }
 
-  useEffect(() => {}, []);
+
+
+  useEffect(() => {
+    getData()
+
+  }, [address]);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/user/${id}`);
+      await axios.delete(`https://comicadigitalbackend.up.railway.app/api/addresses/${id}`);
       alert("Delete Successful");
-      setAddress([]);
-      setData([]);
+     
+      // setData([]);
     } catch (e) {
       console.log(e.message);
     }
@@ -66,13 +96,13 @@ const Paymentform = () => {
 
   const handleEdit = async (id) => {
     try {
-      let data = await axios.patch(`http://localhost:8080/user/${id}`, invoice);
-      setAddress(data.data);
+      let data = await axios.patch(`https://comicadigitalbackend.up.railway.app/api/addresses/${id}`, invoice);
+     
     } catch (e) {
       console.log(e.message);
     }
   };
-  // console.log(address,"me address hu")
+
 
   return (
     <Box sx={{ backgroundColor: "#f5f7f7" }}>
@@ -93,7 +123,12 @@ const Paymentform = () => {
       >
         <h4>SHIPPING ADDRESS</h4>
         <br />
-        <Box
+
+        {
+          address.map((item, index) => {
+            return (
+              <>
+                 <Box
           sx={{
             width: "38%",
             height: "auto",
@@ -105,7 +140,7 @@ const Paymentform = () => {
           }}
         >
           <h6 class="owl_schl">
-            {address?.firstname} {address?.lastname}{" "}
+            {item?.firstname} {item.lastname}
           </h6>
 
           <Text
@@ -116,8 +151,8 @@ const Paymentform = () => {
               paddingTop: "5px",
             }}
           >
-            {address.address}, {address.city}, {address.city}-{address.pincode},{" "}
-            {address.state}
+            {item.address}, {item.city}, {item.city}-{item.pincode},{" "}
+            {item.state}
           </Text>
 
           <Text
@@ -129,7 +164,7 @@ const Paymentform = () => {
             }}
           >
             <b id="spcl_b">Mobile : </b>
-            {address.mobile}
+            {item.mobile}
           </Text>
           <br />
           <br />
@@ -137,17 +172,22 @@ const Paymentform = () => {
             <Button className="raja_wat">
               <Editpayment
                 handleEditChange={handleEditChange}
-                handleEdit={handleEdit(address?._id)}
+                handleEdit={handleEdit(item?._id)}
               />
             </Button>
             <Button
-              onClick={() => handleDelete(address?._id)}
+              onClick={() => handleDelete(item?._id)}
               className="raja_wat"
             >
               Delete
             </Button>
           </Flex>
         </Box>
+              </>
+            )
+          })
+        }
+     
         <br />
 
         <Box

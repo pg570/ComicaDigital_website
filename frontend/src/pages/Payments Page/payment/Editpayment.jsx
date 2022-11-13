@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import {Box, Button, Input, useDisclosure,Flex, Heading} from "@chakra-ui/react"
 import {
     Modal,
@@ -14,15 +14,34 @@ import {
 
   } from '@chakra-ui/react'
   import "./payment.css"
+  import axios from "axios"
 
-const Editpayment = ({handleEditChange,handleEdit}) => {
+const Editpayment = ({handleEdit}) => {
+  const [data,setData]=useState([])
+  const [invoice, setInvoice] = useState({
+    
+  });
     const { isOpen, onOpen, onClose } = useDisclosure()
   
     
 
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
+
+    const handleEditChange = (event) => {
+      const { name, value } = event.target;
+      setInvoice({
+        ...invoice,
+        [name]: value,
+      });
+    };
+
+    console.log("invoice:",invoice)
+
   
+   
+
+   
   return (
     <Box>
      
@@ -45,7 +64,7 @@ const Editpayment = ({handleEditChange,handleEdit}) => {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-             <Input  onChange={(e)=>handleEditChange(e)} name="pincode"  ref={initialRef} placeholder='Pin Code' />
+             <Input  onChange={(e)=>handleEditChange(e)} name="pincode"  ref={initialRef} placeholder='Pin Code' >{data.pincode}</Input>
             </FormControl>
 
             <FormControl mt={4}>
