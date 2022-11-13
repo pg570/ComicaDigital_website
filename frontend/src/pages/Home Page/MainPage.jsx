@@ -10,11 +10,6 @@ import { MobileAndTablets } from "./NavbarTitles";
 function MainPage() {
   return (
     <Box color={"black"}>
-      <Box color={"white"}>
-       
-       {/** changed  by madhu */}
-       
-      </Box>
       <Box
         width={"100%"}
         bgColor={"white"}

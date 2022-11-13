@@ -1,7 +1,8 @@
-import { Box, HStack, Image } from "@chakra-ui/react";
+import { Box, Button, Heading, HStack, Image } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import MultiSliderCart from "./MultiSliderCart";
+import { MultiSliderAllItemsCart, MultiSliderCart } from "./MultiSliderCart";
 
 // --------------------------MainSliderComp---------------------------
 
@@ -19,13 +20,13 @@ export function MainSliderComp({ slides }) {
   return (
     <Box>
       <Slider {...settings}>
-          {slides.map((el,i) => {
-            return (
-              <Box key={i} height={{lg:"300px",sm:"200px",base:"100px"}} border={"5px solid green"}>
-                <Image src={el.img} width="100%" height={"100%"}/>;
-              </Box>
-            );
-          })}
+        {slides.map((el, i) => {
+          return (
+            <Box key={i} height={{ lg: "300px", sm: "200px", base: "100px" }}>
+              <Image src={el.img} width="100%" height={"100%"} />;
+            </Box>
+          );
+        })}
       </Slider>
     </Box>
   );
@@ -45,17 +46,59 @@ export function MultiSliderComp({ slides }) {
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <Box>
+    <Box mb="50px">
+      <HStack justifyContent={"flex-start"} alignItems="center" gap="20px">
+        <Heading textAlign={"left"} ml="30px" mb="20px" fontSize={"xl"}>
+          BEST SELLERS FROM {slides[0].category}
+        </Heading>
+        <Link to={`Allitems/${slides.category}`}>
+          <Button colorScheme={"blue"}>View All</Button>
+        </Link>
+      </HStack>
       <Slider {...settings}>
-          {slides.map((el,i) => {
+        {slides.map((el, i) => {
+          return (
+            <Box key={i} height={{ lg: "300px", sm: "200px", base: "100px" }}>
+              <MultiSliderCart data={{ ...el }} />
+            </Box>
+          );
+        })}
+      </Slider>
+    </Box>
+  );
+}
+
+// -----------------------------------------------
+
+export function MultiSliderAllItemsComp({ slides }) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 100,
+    arrows: true,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+  console.log(slides[0].category);
+  return (
+    <>
+      <Box>
+        <Heading color={"blue"} fontSize={"xl"}>
+          BEST SELLERS FROM{" "}
+        </Heading>
+        <Slider {...settings}>
+          {slides.map((el, i) => {
             return (
-              <Box key={i} height={{lg:"300px",sm:"200px",base:"100px"}} border={"5px solid green"}>
-                  <MultiSliderCart data={{...el}} />
+              <Box key={i} height={{ lg: "300px", sm: "200px", base: "100px" }}>
+                <MultiSliderAllItemsCart data={{ ...el }} />
               </Box>
             );
           })}
-      </Slider>
-    </Box>
+        </Slider>
+      </Box>
+    </>
   );
 }
 
