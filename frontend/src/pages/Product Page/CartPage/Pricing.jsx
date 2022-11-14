@@ -11,21 +11,23 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { totalcost } from "../../../store/Cart/Cart.Module";
 // import { Totalfun } from "./Totalfun";
 
-const Pricing = ({render}) => {
+const Pricing = ({ render }) => {
   const [arr, setarr] = useState([]);
   const [pay, setpay] = useState(0);
   const [sum, setsum] = useState(0);
   const [couponinput, setcouponinput] = useState("");
-  const [qty,setqty] = useState(0)
+  const [qty, setqty] = useState(0);
+
+  const dispatch = useDispatch();
   useEffect(() => {
     fetchproducts();
-
   }, [render]);
-  
-  const user = JSON.parse(localStorage.getItem('userDetails'));
 
+  const user = JSON.parse(localStorage.getItem("userDetails"));
 
   const fetchproducts = async () => {
     await axios
@@ -35,17 +37,17 @@ const Pricing = ({render}) => {
       .then((res) => {
         setarr(res.data);
         Totalfun(res.data);
-        totalqty(res.data)
+        totalqty(res.data);
       });
   };
-  console.log(arr)
-  const totalqty =(data)=>{
-let totalqty=0;
-data.map((e)=>{
-  totalqty += e.qty
-})
-setqty(totalqty)
-  }
+  console.log(arr);
+  const totalqty = (data) => {
+    let totalqty = 0;
+    data.forEach((e) => {
+      totalqty += e.qty;
+    });
+    setqty(totalqty);
+  };
 
   const Totalfun = async (data) => {
     let total = 0;
@@ -60,6 +62,7 @@ setqty(totalqty)
           total += +res.data.offer_price * +e.qty;
         });
       console.log(total);
+      dispatch(totalcost(total));
       setsum(total);
       setpay(total);
     });
@@ -71,14 +74,20 @@ setqty(totalqty)
     let Remove = "Madhu@0";
     console.log(sum);
     setcouponinput("");
-  
+
     if (Remove === couponinput) {
+      dispatch(dispatch({ type: "Total_cost", payload: sum }))
+
       return setpay(sum);
     }
     if (coupon === couponinput) {
-      return setpay(sum / 2);
+      
+      dispatch(dispatch({ type: "Total_cost", payload: (sum / 2) }))
+      return setpay(sum / 2)
     }
     if (coupon25 === couponinput) {
+      dispatch(dispatch({ type: "Total_cost", payload: (sum - sum / 4) }))
+
       return setpay(sum - sum / 4);
     }
   };

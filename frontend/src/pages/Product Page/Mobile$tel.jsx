@@ -21,6 +21,7 @@ const Mobile$tel = (
       }}
     >
       <Stack textAlign={"start"}  >
+      <Link  to={"/Allitems/smartphone"}>
         <Heading
           m={"3px"}
           textDecoration={"underline"}
@@ -29,8 +30,9 @@ const Mobile$tel = (
         >
           Smartphones
         </Heading>
-
+        </Link>
         <Stack m={"3px"}>
+        <Link t0={"/Allitems/headphones"}>
           <Heading
             m={"3px"}
             textDecoration={"underline"}
@@ -39,6 +41,7 @@ const Mobile$tel = (
           >
             Wearable Technology
           </Heading>
+          </Link>
           <Text
             cursor={"pointer"}
             m={"3px"}
@@ -72,8 +75,8 @@ const Mobile$tel = (
             fontSize={"14px"}
             color={"#ffffff"}
           >
-          <Link to={"/Allitems/mobile"}>
-            Mobile_Accessories</Link>
+          <Link to={"/Allitems/smartphone"}>
+            Smartphones</Link>
           </Text>
           <Text
             cursor={"pointer"}
@@ -117,7 +120,7 @@ const Mobile$tel = (
           fontSize={"14px"}
           color={"#ffffff"}
         >
-        <Link to={"/Allitems/ear"}>
+        <Link to={"/Allitems/headphones"}>
           Headphones & Headsets</Link>
         </Heading>
 
