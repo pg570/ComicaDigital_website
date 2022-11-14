@@ -10,7 +10,7 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
-
+import "../payment.css";
 // import { CheckCircleIcon } from "@chakra-ui/icons";
 // import { Select } from "@chakra-ui/react";
 // import { useContext } from "react";
@@ -21,140 +21,129 @@ import PaymetRoutes from "../PayRoutes/PaymetRoutes";
 
 import axios from "axios";
 import GetProductDetail from "./GetProductDetail";
+import { useSelector } from "react-redux";
 
 const Nextpayment = () => {
   // const { data } = useContext(AppProvider);
   // console.log(data, "me data hu");
- 
+
   const [address, setAddress] = useState([]);
   const [product, setProduct] = useState([]);
   const [productId, setProductId] = useState("");
   const [detail, setDetail] = useState({});
-  
 
-  const user = JSON.parse(localStorage.getItem('userDetails'));
+  const {cost} = useSelector((store)=>store.Cart)
 
-  async function getProduct(){
-    
+  const user = JSON.parse(localStorage.getItem("userDetails"));
+
+  async function getProduct() {
     try {
-      let res = await axios.get(`https://comicadigitalbackend.up.railway.app/api/carts/${user.userId}`);
+      let res = await axios.get(
+        `https://comicadigitalbackend.up.railway.app/api/carts/${user.userId}`
+      );
 
       // console.log(res.data);
-       setProduct(res.data);
+      setProduct(res.data);
       // setProductId(res.data.productId)
     } catch (e) {
       console.log(e.message);
     }
   }
 
-
-
   // async function getDetailId(id){
   //   try {
   //     let res = await axios.get(`https://comicadigitalbackend.up.railway.app/api/products/${id}`);
   //     console.log(res.data)
   //     //  setDetail(res.data);
-     
+
   //   } catch (e) {
   //     console.log(e.message);
   //   }
   // }
 
- 
-
-
-
-  
-  async function getData(){
-    
+  async function getData() {
     try {
-      let res = await axios.get(`https://comicadigitalbackend.up.railway.app/api/addresses/userId/${user.userId}`);
+      let res = await axios.get(
+        `https://comicadigitalbackend.up.railway.app/api/addresses/userId/${user.userId}`
+      );
 
       // console.log(res.data);
-       setAddress(res.data);
-    
+      setAddress(res.data);
     } catch (e) {
       console.log(e.message);
     }
   }
 
-
-
   useEffect(() => {
-    getData()
-
+    getData();
   }, [address]);
 
   useEffect(() => {
-   
-    getProduct()
+    getProduct();
   }, [product]);
-
-
-
-
 
   return (
     <Box sx={{ backgroundColor: "#f5f7f7", height: "auto", padding: "70px" }}>
-     {
-      address.map((data)=>{
-        return(
+      {address.map((data) => {
+        return (
           <>
-           <Box
-        sx={{
-          width: "95%",
-          height: "auto",
-          borderRadius: "8px",
-          backgroundColor: "#e7e9e9",
-          border: "1px solid #dddddd",
-          padding: "10px 20px",
-          textAlign: "start",
-          margin: "auto",
-        }}
-      >
-        <Flex>
-          <Checkbox size="xl" colorScheme="blue" defaultChecked>
-            <h4>SHIPPING ADDRESS</h4>
-          </Checkbox>
-        </Flex>
-        <br />
+            <Box
+              sx={{
+                width: "95%",
+                height: "auto",
+                borderRadius: "8px",
+                backgroundColor: "#e7e9e9",
+                border: "1px solid #dddddd",
+                padding: "10px 20px",
+                textAlign: "start",
+                margin: "auto",
+              }}
+            >
+              <Flex>
+                <Checkbox size="xl" colorScheme="blue" defaultChecked>
+                  <h4>SHIPPING ADDRESS</h4>
+                </Checkbox>
+              </Flex>
+              <br />
 
-        <h6 class="owl_schl">
-          {data.firstname} {data.lastname}
-        </h6>
+              <h6 class="owl_schl">
+                {data.firstname} {data.lastname}
+              </h6>
 
-        <Text
-          sx={{
-            marginLeft: "13px",
-            color: "rgb(51, 51, 51)",
-            fontSize: "13px",
-            fontWeight:"600",
-            paddingTop: "5px",
-            fontWeight:"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
-          }}
-        >
-          {data.address}, {data.city}, {data.city}-{data.pincode}, {data.state}
-        </Text>
+              <Text
+                sx={{
+                  marginLeft: "13px",
+                  color: "rgb(51, 51, 51)",
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  paddingTop: "5px",
+                  fontWeight:
+                    "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+                }}
+              >
+                {data.address}, {data.city}, {data.city}-{data.pincode},{" "}
+                {data.state}
+              </Text>
 
-        <Text
-          sx={{
-            marginLeft: "13px",
-            color: "rgb(51, 51, 51)",
-            fontSize: "13px",
-            fontWeight:"600",
-            paddingTop: "5px",
-            fontWeight:"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
-          }}
-        >
-          <b id="spcl_b">Mobile : </b> {data.mobile}{" "}
-        </Text>
-        <br />
-        <br />
-      </Box>
+              <Text
+                sx={{
+                  marginLeft: "13px",
+                  color: "rgb(51, 51, 51)",
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  paddingTop: "5px",
+                  fontWeight:
+                    "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+                }}
+              >
+                <b id="spcl_b">Mobile : </b> {data.mobile}{" "}
+              </Text>
+              <br />
+              <br />
+            </Box>
           </>
-        )
-      })
-     }
+        );
+      })}
       <br />
       <Box
         sx={{
@@ -168,34 +157,28 @@ const Nextpayment = () => {
           margin: "auto",
         }}
       >
-        <Flex >
+        <Flex>
           <Checkbox size="xl" colorScheme="blue" defaultChecked>
             <h4>ORDER DETAILS</h4>
           </Checkbox>
         </Flex>
 
+        <br />
+        {product?.map((el) => {
+          return <GetProductDetail id={el.productId} qty={el.qty} />;
+        })}
 
         <br />
-        {
-          product?.map((el)=>{
-           
-            return(
-              
-             
-                 <GetProductDetail id={el.productId} qty={el.qty}/>
-             
-                 
+        <Flex sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box className="pari_diff">{detail.title}</Box>
+        <Flex sx={{ display: "flex", justifyContent: "start", gap: "20px" }}>
+          <Box className="pari_diff">Total cost:</Box>
 
-            )
-          })
-        }
-
-       
-
-      
-
-      
-        <br />
+          <Box className="pari_diff" display={"flex"}>
+            Price: ₹{cost}.00
+          </Box>
+        </Flex>
+      </Flex>
         <br />
       </Box>
       <br />

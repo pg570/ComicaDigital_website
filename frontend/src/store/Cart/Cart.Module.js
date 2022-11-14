@@ -1,7 +1,7 @@
-// export const Rendercartfun = (name) => async (dispatch) => {
-//     console.log(name)
+export const totalcost = (cost) => async (dispatch) => {
+     console.log(cost)
 
    
-//     // dispatch({ type: "Render_cart", payload: name });
-//   // dispatch()
-//   };
+    dispatch({ type: "Total_cost", payload: cost });
+  // dispatch()
+  };

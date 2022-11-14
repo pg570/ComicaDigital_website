@@ -24,7 +24,7 @@ import axios from "axios";
 const Detail = () => {
 
   
-  const [state,setState]= useState([])
+  const [state,setState]= useState({})
   const {id} = useParams()
   // const [user,setuser]= useState({})
 
@@ -56,10 +56,16 @@ const Detail = () => {
 
 
   useEffect (() => {
-    axios.get(`http://comicadigitalbackend.up.railway.app/api/products/${id}`).then(res => setState(res.data)).catch(err =>console.log(err))
-  
+    getdetails()
   
   }, [])
+
+
+  const getdetails =async()=>{
+  await  axios.get(`https://comicadigitalbackend.up.railway.app/api/products/${id}`).then(res => setState(res.data)).catch(err =>console.log(err))
+
+  }
+
 
 //   useEffect(()=>{
 //     dispatch(getProductsSmartPhone())
