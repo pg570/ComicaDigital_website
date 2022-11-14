@@ -35,7 +35,7 @@ In this project we used following tech stacks:-
 - [Kiran Kamble](https://github.com/kiranwithcode)
 - [Prashant Giri](https://github.com/pg570)
 
-## Homepage
+<!-- ## Homepage
 
 ![App Screenshot](https://i.postimg.cc/FRN5h3b0/Screenshot-345.jpg)
 
@@ -57,7 +57,7 @@ In this project we used following tech stacks:-
 
 ## Tasks page
 
-![App Screenshot](https://i.postimg.cc/wMZ8DPJd/Screenshot-350.jpg)
+![App Screenshot](https://i.postimg.cc/wMZ8DPJd/Screenshot-350.jpg) -->
 
 
 ## Deployment
