@@ -1,6 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Detail from "../pages/Detail Page/Detail";
 import Nextpayment from "../pages/Payments Page/payment/nextpayment/nextpart";
 import Paymentform from "../pages/Payments Page/payment/paymentform";
@@ -17,6 +17,12 @@ import Navbar from "../pages/Home Page/Navbar";
 import Login from "../pages/Login Page/Login";
 import SignUp from "../pages/Signup Page/SignUp";
 const Allrouts = () => {
+  // const location = useLocation()
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <Box>
       <Routes>

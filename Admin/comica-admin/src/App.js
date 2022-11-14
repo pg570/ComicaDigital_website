@@ -2,14 +2,13 @@ import * as React from "react";
 import { Admin, ListGuesser, Resource } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
 import authProvider from "./authProvider/authProvider";
+import simpleRestProvider from 'ra-data-json-server'
+import { UserList } from "./users/UserList";
 
-const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
-
+const dataProvider = simpleRestProvider('https://comicadigitalbackend.up.railway.app/api');
 const App = () => (
-  <Admin dataProvider={dataProvider} authProvider={authProvider}>
-    <Resource name="users" list={ListGuesser} />
-    <Resource name="posts" list={ListGuesser} />
-    <Resource name="products" list={ListGuesser} />
+  <Admin dataProvider={dataProvider} >
+    <Resource name="users" list={UserList} />
   </Admin>
 );
 

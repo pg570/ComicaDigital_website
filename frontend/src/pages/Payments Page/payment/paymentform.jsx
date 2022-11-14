@@ -37,7 +37,6 @@ const Paymentform = () => {
         [name]: +value,
       });
     }else{
-
       setInvoice({
         ...invoice,
         [name]: value,
@@ -58,9 +57,9 @@ const Paymentform = () => {
     e.preventDefault();
   
     try {
+
       let res = await axios.post("https://comicadigitalbackend.up.railway.app/api/addresses", invoice);
 
-    
     } catch (e) {
       console.log(e.message);
     }
@@ -81,7 +80,7 @@ const Paymentform = () => {
     }
   }
 
-
+// console.log(address)
 
   useEffect(() => {
     getData()
@@ -266,7 +265,7 @@ const Paymentform = () => {
         >
           <Button class="pri_btn">
             {" "}
-            <Link to="/nextpayment">DELIVER HERE </Link>
+            <Link to="/nextpayment/upi">DELIVER HERE </Link>
           </Button>
 
           <Paymets handleChange={handleChange} handleSubmit={handleSubmit} />

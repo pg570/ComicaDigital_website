@@ -60,17 +60,15 @@ const Allitemspage = () => {
   };
 
   const checkdata = () => {
-
-    if(loading){
-      return(
+    if (loading) {
+      return (
         <Box>
-        <Image src={load} />
+          <Image src={load} />
         </Box>
-      )
+      );
     }
 
     if (arr.length === 0 && filteredProducts.length === 0) {
-      
       return (
         <Box display={"flex"} justifyContent={"center"}>
           <Image
@@ -78,9 +76,7 @@ const Allitemspage = () => {
             src={Nodata}
             alt="No relevent data present in data base"
           />
-          
         </Box>
-        
       );
     }
   };

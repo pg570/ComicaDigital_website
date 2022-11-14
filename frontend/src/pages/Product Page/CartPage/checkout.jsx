@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Checkout = () => {
   return (
     <Box mb={"10px"} bg={"#ffffff"} color="Black">
-    <Link to={"/nextpayment/upi"}>
+    <Link to={"/payment"}>
       <Flex justifyContent={"center"}>
         
           <Box

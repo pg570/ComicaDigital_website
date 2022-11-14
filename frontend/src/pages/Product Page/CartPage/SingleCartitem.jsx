@@ -59,7 +59,8 @@ const dispatch = useDispatch()
     let data = await axios.delete(
       `https://comicadigitalbackend.up.railway.app/api/carts/${id}`
     );
-    console.log(data);  }
+    console.log(data);
+    props.reload()  }
 
   return (
     <div>

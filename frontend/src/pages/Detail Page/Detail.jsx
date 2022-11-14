@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import "./detail.css";
 import Tables from "./table";
 import Axios from "axios"
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import ratingicon from "../../Assets/ratingicon.png";
 import { MultiSliderComp } from "../Home Page/SliderComp";
 import axios from "axios";
@@ -24,7 +24,7 @@ import axios from "axios";
 const Detail = () => {
 
   
-  const [state,setState]= useState([])
+  const [state,setState]= useState({})
   const {id} = useParams()
   // const [user,setuser]= useState({})
 
@@ -46,13 +46,26 @@ const Detail = () => {
   // const watches = useSelector(store=>store.productsWatches)
   // const headphones = useSelector(store=>store.productsHeadphones)
   // const ac = useSelector(store=>store.productsAC)
+  const location = useLocation()
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
 
 
   useEffect (() => {
-    Axios.get(`http://comicadigitalbackend.up.railway.app/api/products/${id}`).then(res => setState(res.data)).catch(err =>console.log(err))
-  
+    getdetails()
   
   }, [])
+
+
+  const getdetails =async()=>{
+  await  axios.get(`https://comicadigitalbackend.up.railway.app/api/products/${id}`).then(res => setState(res.data)).catch(err =>console.log(err))
+
+  }
+
 
 //   useEffect(()=>{
 //     dispatch(getProductsSmartPhone())
