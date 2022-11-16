@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { totalcost } from "../../../store/Cart/Cart.Module";
 // import { Totalfun } from "./Totalfun";
 
@@ -21,14 +22,16 @@ const Pricing = ({ render }) => {
   const [sum, setsum] = useState(0);
   const [couponinput, setcouponinput] = useState("");
   const [qty, setqty] = useState(0);
-
+// const navigator = useNavigate()
   const dispatch = useDispatch();
   useEffect(() => {
     fetchproducts();
   }, [render]);
 
   const user = JSON.parse(localStorage.getItem("userDetails"));
-
+  
+  
+   
   const fetchproducts = async () => {
     await axios
       .get(

@@ -127,8 +127,7 @@ const dispatch = useDispatch()
               textAlign={"start"}
               color={"#003380"}
             >
-              Hammer String 3 blotooth Wireless Neckband Earphone with
-              Sweat-proof and Deep Bass, Black Red with 1 year warranty
+             {obj.title}
             </Text>
             <Text
               color={"#666666"}
@@ -136,7 +135,7 @@ const dispatch = useDispatch()
               lineHeight={"21px"}
               textAlign={"start"}
             >
-              item id {props.obj.qty}
+              item id {props.obj._id}
             </Text>
             <Flex gap={"2px"}>
               {val.map((e) => {
@@ -191,7 +190,9 @@ const dispatch = useDispatch()
             textAlign={"center"}
             color={"#1774ef"}
             _hover={{cursor:"pointer"}}
-            onClick={()=>DeletefromCart(props.obj._id)}
+            onClick={()=>{
+              console.log(props.obj._id)
+              DeletefromCart(props.obj._id)}}
           >
             Remove
           </Box>

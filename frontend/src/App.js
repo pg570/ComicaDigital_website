@@ -12,6 +12,7 @@ import Allrouts from "./Router/Allrouts";
 import MainPage from "./pages/Home Page/MainPage";
 import Navbar from "./pages/Home Page/Navbar";
 import Footer from "./pages/Home Page/Footer";
+import PrivateRouter from "./components/PrivateRouter/PrivateRouter";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Allrouts />
       <Box color={"white"}>
         <Footer />
+        <PrivateRouter/>
       </Box>
     </div>
   );
