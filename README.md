@@ -66,6 +66,12 @@ In this project we used following tech stacks:-
 ![](backend/screenshots/Screenshot%20(304).png)
 ![](backend/screenshots/Screenshot%20(305).png)
 
+## Admin panel pages
+
+![](backend/screenshots/Screenshot%20(306).png)
+![](backend/screenshots/Screenshot%20(307).png)
+![](backend/screenshots/Screenshot%20(308).png)
+
 
 ## Deployment
 
