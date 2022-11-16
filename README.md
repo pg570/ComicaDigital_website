@@ -3,6 +3,8 @@ Hi, everyone we are group of 5 members and we have created a website comicadigit
 
 ComicaDigital is a e-commerce website where user can order electronics and home appliances as well.
 
+#### Admin panel link - https://comicaadmin.netlify.app/admin/login
+
 ### Features
 - Homepage, login and signup page - Aman Trivedi
 - Products page and cart page - Madhusainadh Lalam
@@ -80,5 +82,5 @@ To deploy this project run
 
 ### Feedback
 
-If you have any feedback or queries, please reach out to us at kumar.prashant477@gmail.com.
+If you have any feedback or queries, please reach out to us at pgiri570@gmail.com
 
