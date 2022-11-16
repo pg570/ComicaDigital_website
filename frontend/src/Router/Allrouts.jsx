@@ -16,6 +16,7 @@ import MainPage from "../pages/Home Page/MainPage";
 import Navbar from "../pages/Home Page/Navbar";
 import Login from "../pages/Login Page/Login";
 import SignUp from "../pages/Signup Page/SignUp";
+import PrivateRouter from "../components/PrivateRouter/PrivateRouter";
 const Allrouts = () => {
   // const location = useLocation()
   const { pathname } = useLocation();
@@ -23,15 +24,37 @@ const Allrouts = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
   return (
     <Box>
       <Routes>
         <Route path={"/"} element={<MainPage />} />
         <Route path={"/Allitems/:category"} element={<Allitemspage />} />
         <Route path="/SingleProduct/:id" element={<Detail />} />
-        <Route path="/Cart" element={<CartPage />} />
-        <Route path={"/payment"} element={<Paymentform />} />
-        <Route path="/" element={<Nextpayment />}>
+        <Route
+          path="/Cart"
+          element={
+            <PrivateRouter>
+              <CartPage />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path={"/payment"}
+          element={
+            <PrivateRouter>
+              <Paymentform />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <PrivateRouter>
+              <Nextpayment />
+            </PrivateRouter>
+          }
+        >
           <Route path="/nextpayment/upi" element={<Upi />} />
           <Route
             path="/nextpayment/buynowpaylater"

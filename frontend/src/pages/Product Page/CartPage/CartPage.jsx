@@ -14,6 +14,7 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import ratingicon from "../../../Assets/ratingicon.png";
 import Checkout from "./checkout";
 import Pricing from "./Pricing";
@@ -23,12 +24,20 @@ const CartPage = () => {
 
 const [arr,setarr]=useState([])
 const [render,setrender] = useState(true)
+// const navigator = useNavigate()
 
 
 const user = JSON.parse(localStorage.getItem('userDetails'));
-
+// if(!user){
+//   navigator("/login")
+// }
   useEffect(()=>{
-    axios.get(`https://comicadigitalbackend.up.railway.app/api/carts/${user.userId}`).then((res)=>setarr(res.data))
+    try{
+      axios.get(`https://comicadigitalbackend.up.railway.app/api/carts/${user.userId}`).then((res)=>setarr(res.data))
+
+    }catch(err){
+      console.log(err.message)
+    }
   },[render])
   console.log(render)
 
@@ -36,7 +45,7 @@ const user = JSON.parse(localStorage.getItem('userDetails'));
   const reload =()=>{
     setrender(!render)
     console.log(render)
-    console.log("reknvjdfnvdonvuern")
+    // console.log("reknvjdfnvdonvuern")
   }
 
   return (
