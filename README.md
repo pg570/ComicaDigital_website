@@ -17,7 +17,7 @@ In this project we used following tech stacks:-
 - [ReactJS](https://reactjs.org/)
 - [NodeJS](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
-- [MongoDb](https://www.mongodb.com/)
+- [MongoDB](https://www.mongodb.com/)
 - [Chakra UI](https://chakra-ui.com/)
 - [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -35,29 +35,34 @@ In this project we used following tech stacks:-
 - [Kiran Kamble](https://github.com/kiranwithcode)
 - [Prashant Giri](https://github.com/pg570)
 
-<!-- ## Homepage
+## Homepage
 
-![App Screenshot](https://i.postimg.cc/FRN5h3b0/Screenshot-345.jpg)
+![](backend/screenshots/Screenshot%20(297).png)
 
 ## Login page
 
-![App Screenshot](https://i.postimg.cc/WpM3TwMf/Screenshot-351.jpg)
+![](backend/screenshots/Screenshot%20(298).png)
 
-## Dashboard page
+## Signup page
 
-![App Screenshot](https://i.postimg.cc/gcwVDQbL/Screenshot-347.jpg)
+![](backend/screenshots/Screenshot%20(299).png)
 
-## Client page
+## Products page
 
-![App Screenshot](https://i.postimg.cc/fWBbVTrx/Screenshot-353.jpg)
+![](backend/screenshots/Screenshot%20(300).png)
 
-## Projects page
+## Product detail page
 
-![App Screenshot](https://i.postimg.cc/4ynBbxbY/Screenshot-352.jpg)
+![](backend/screenshots/Screenshot%20(301).png)
 
-## Tasks page
+## Cart page
 
-![App Screenshot](https://i.postimg.cc/wMZ8DPJd/Screenshot-350.jpg) -->
+![](backend/screenshots/Screenshot%20(302).png)
+
+## Payment page
+
+![](backend/screenshots/Screenshot%20(304).png)
+![](backend/screenshots/Screenshot%20(305).png)
 
 
 ## Deployment
