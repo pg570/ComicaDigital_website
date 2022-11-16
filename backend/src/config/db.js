@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const connect = ()=>{
-    return mongoose.connect("mongodb+srv://pg570:Pgiri570@cluster0.2tw3cl1.mongodb.net/?retryWrites=true&w=majority");
-}
+const mongoose = require("mongoose");
+const connect = () => {
+  return mongoose.connect(process.env.MONGOURL);
+};
 
-module.exports = connect
+module.exports = connect;
