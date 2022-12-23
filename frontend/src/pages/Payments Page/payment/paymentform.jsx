@@ -2,111 +2,42 @@ import { Box, Button, Text, Flex } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 
 import "./payment.css";
-import Paymets from "./Paymet";
+import Paymet from "./Paymet";
 import axios from "axios";
 import Editpayment from "./Editpayment";
-import { useContext } from "react";
-import { AppProvider } from "./context/Context";
 import { Link } from "react-router-dom";
 const Paymentform = () => {
-  // const { setData } = useContext(AppProvider);
-  const [payme, setPayme] = useState([]);
-  
+  const user = JSON.parse(localStorage.getItem("userDetails"));
 
-  const user = JSON.parse(localStorage.getItem('userDetails'));
-
-  
-  const [invoice, setInvoice] = useState({
-    pincode: 0,
-    firstname: "",
-    lastname: "",
-    address: "",
-    city: "",
-    state: "",
-    mobile: 0,
-    userId:user.userId,
-  });
   const [address, setAddress] = useState([]);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    if(name=== "mobile" || name === "pincode")
-    {
-      setInvoice({
-        ...invoice,
-        [name]: +value,
-      });
-    }else{
-      setInvoice({
-        ...invoice,
-        [name]: value,
-      });
-    }
-  };
-
-  const handleEditChange = (event) => {
-    const { name, value } = event.target;
-    setInvoice({
-      ...invoice,
-      [name]: value,
-    });
-  };
-
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-  
+  async function getData() {
     try {
-
-      let res = await axios.post("https://comicadigitalbackend.up.railway.app/api/addresses", invoice);
-
-    } catch (e) {
-      console.log(e.message);
-    }
-  }
-  // console.log(invoice);
-
-
-  async function getData(){
-    
-    try {
-      let res = await axios.get(`https://comicadigitalbackend.up.railway.app/api/addresses/userId/${user.userId}`);
+      let res = await axios.get(
+        `https://comicadigitalbackend.up.railway.app/api/addresses/userId/${user.userId}`
+      );
 
       // console.log(res.data);
-       setAddress(res.data);
-      // setData(res.data);
+      setAddress(res.data);
     } catch (e) {
       console.log(e.message);
     }
   }
-
-// console.log(address)
-
-  useEffect(() => {
-    getData()
-
-  }, [address]);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://comicadigitalbackend.up.railway.app/api/addresses/${id}`);
-      alert("Delete Successful");
-     
-      // setData([]);
+      await axios.delete(
+        `https://comicadigitalbackend.up.railway.app/api/addresses/${id}`
+      );
+      alert("Address Deleted Successfully");
     } catch (e) {
       console.log(e.message);
     }
   };
 
-  const handleEdit = async (id) => {
-    try {
-      let data = await axios.patch(`https://comicadigitalbackend.up.railway.app/api/addresses/${id}`, invoice);
-     
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
-
+  useEffect(() => {
+    getData();
+  }, [address]);
 
   return (
     <Box sx={{ backgroundColor: "#f5f7f7" }}>
@@ -127,71 +58,67 @@ const Paymentform = () => {
       >
         <h4>SHIPPING ADDRESS</h4>
         <br />
-
-        {
-          address.map((item, index) => {
+        <Flex alignItems="center" flexWrap={"wrap"} gap="50px">
+          {address?.map((item) => {
             return (
-              <>
-                 <Box
-          sx={{
-            width: "38%",
-            height: "auto",
-            borderRadius: "8px",
-            backgroundColor: "#f5f7f7",
-            border: "1px solid #dddddd",
-            padding: "20px 0px 0px 0px",
-            textAlign: "start",
-          }}
-        >
-          <h6 class="owl_schl">
-            {item?.firstname} {item.lastname}
-          </h6>
+              <Box
+                key={item._id}
+                sx={{
+                  width: "38%",
+                  height: "auto",
+                  borderRadius: "8px",
+                  backgroundColor: "#f5f7f7",
+                  border: "1px solid #dddddd",
 
-          <Text
-            sx={{
-              marginLeft: "13px",
-              color: "black",
-              fontSize: "15px",
-              paddingTop: "5px",
-            }}
-          >
-            {item.address}, {item.city}, {item.city}-{item.pincode},{" "}
-            {item.state}
-          </Text>
+                  textAlign: "start",
+                }}
+                p={3}
+              >
+                <h6 class="owl_schl">
+                  {item?.firstname} {item.lastname}
+                </h6>
 
-          <Text
-            sx={{
-              marginLeft: "13px",
-              color: "black",
-              fontSize: "15px",
-              paddingTop: "5px",
-            }}
-          >
-            <b id="spcl_b">Mobile : </b>
-            {item.mobile}
-          </Text>
-          <br />
-          <br />
-          <Flex>
-            <Button className="raja_wat">
-              <Editpayment
-                handleEditChange={handleEditChange}
-                handleEdit={handleEdit(item?._id)}
-              />
-            </Button>
-            <Button
-              onClick={() => handleDelete(item?._id)}
-              className="raja_wat"
-            >
-              Delete
-            </Button>
-          </Flex>
-        </Box>
-              </>
-            )
-          })
-        }
-     
+                <Text
+                  sx={{
+                    marginLeft: "13px",
+                    color: "black",
+                    fontSize: "15px",
+                    paddingTop: "5px",
+                  }}
+                >
+                  {item.address}, {item.city}, {item.city}-{item.pincode},{" "}
+                  {item.state}
+                </Text>
+
+                <Text
+                  sx={{
+                    marginLeft: "13px",
+                    color: "black",
+                    fontSize: "15px",
+                    paddingTop: "5px",
+                  }}
+                >
+                  <b id="spcl_b">Mobile : </b>
+                  {item.mobile}
+                </Text>
+                <br />
+                <br />
+                <Flex>
+                  <Button className="raja_wat">
+                    <Editpayment />
+                  </Button>
+                  <Button
+                    onClick={() => handleDelete(item?._id)}
+                    className="raja_wat"
+                  >
+                    Delete
+                  </Button>
+                </Flex>
+              </Box>
+            );
+          })}
+        </Flex>
+
         <br />
 
         <Box
@@ -263,12 +190,18 @@ const Paymentform = () => {
             padding: "7px 0px 0px 7px",
           }}
         >
-          <Button class="pri_btn">
-            {" "}
-            <Link to="/nextpayment/upi">DELIVER HERE </Link>
-          </Button>
+          <Link to="/nextpayment/upi">
+            <Button
+              variant={"blackAlpha"}
+              color="white"
+              bgColor="red.500"
+              disabled={address.length === 0}
+            >
+              DELIVER HERE
+            </Button>
+          </Link>
 
-          <Paymets handleChange={handleChange} handleSubmit={handleSubmit} />
+          <Paymet />
         </Flex>
       </Box>
       <br />
