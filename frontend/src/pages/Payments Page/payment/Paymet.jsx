@@ -49,6 +49,8 @@ const Paymets = ({}) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+      console.log(invoice);
+
     try {
       await axios.post(
         "https://comicadigitalbackend.up.railway.app/api/addresses",

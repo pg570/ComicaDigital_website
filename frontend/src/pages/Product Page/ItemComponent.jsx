@@ -18,6 +18,7 @@ const ItemComponent = (props) => {
   const [wish, setwish] = useState(false);
   let val = Array.from({ length: props.rating }, (_, i) => i + 1);
 
+  
   return (
     <div bg={"#ffffff"} key={props.id}>
       <Box boxShadow="base" bg={"#ffffff"} w={"291px"}>

@@ -33,6 +33,8 @@ function Navbar() {
   const [display, setDisplay] = useState(false);
   const [titleText, setTitleText] = useState("");
   const [click, setClick] = useState(false);
+  let userSigin = localStorage.getItem("userDetails")
+
   const { data, error, loading } = useSelector((store) => store.auth);
   const toast = useToast();
 
@@ -122,7 +124,7 @@ function Navbar() {
                 <CgProfile />
 
                 <Text color={"white"} fontWeight="500">
-                  {data.isAuthenticated ? (
+                  {data.isAuthenticated||userSigin ? (
                     <AfterUserLogin />
                   ) : (
                     <Link to="/login">

@@ -38,7 +38,13 @@ const Nextpayment = () => {
   const { cost } = useSelector((store) => store.Cart);
   const user = JSON.parse(localStorage.getItem("userDetails"));
   const [l, setL] = useState(false);
+  useEffect(() => {
+    getData();
+  }, []);
 
+  useEffect(() => {
+    getProduct();
+  }, [product]);
   async function getProduct() {
     try {
       let res = await axios.get(
@@ -52,12 +58,13 @@ const Nextpayment = () => {
   }
 
   async function getData() {
+    console.log(user.userId);
     try {
       setL(true);
       let res = await axios.get(
         `https://comicadigitalbackend.up.railway.app/api/addresses/userId/${user.userId}`
       );
-      // console.log(res.data[0]);
+      console.log(res.data);
       setAddress(res.data[0]);
       setL(false);
     } catch (e) {
@@ -65,14 +72,6 @@ const Nextpayment = () => {
       setL(false);
     }
   }
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  useEffect(() => {
-    getProduct();
-  }, [product]);
 
   return (
     <Box sx={{ backgroundColor: "#f5f7f7", height: "auto", padding: "70px" }}>

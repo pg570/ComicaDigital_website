@@ -17,7 +17,7 @@ const Paymentform = () => {
         `https://comicadigitalbackend.up.railway.app/api/addresses/userId/${user.userId}`
       );
 
-      // console.log(res.data);
+      console.log(res.data);
       setAddress(res.data);
     } catch (e) {
       console.log(e.message);
@@ -34,7 +34,6 @@ const Paymentform = () => {
       console.log(e.message);
     }
   };
-
   useEffect(() => {
     getData();
   }, [address]);

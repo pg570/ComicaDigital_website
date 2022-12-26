@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 const PrivateRouter = ({children}) => {
 
-    // let data = localStorage.getItem("userDetails")
+    let userSigin = localStorage.getItem("userDetails")
     // console.log(data)
     const navigate = useNavigate();
     // console.log(data)
     const { data, error, loading } = useSelector((store) => store.auth);
     console.log(data.isAuthenticated)
     useEffect(() => {
-        if (!data.isAuthenticated) {
+        if (!userSigin&&!data.isAuthenticated) {
             return navigate("/login");
         }
     },[data])

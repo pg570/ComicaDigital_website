@@ -68,6 +68,7 @@ export const authReducer = (state = authInitalState,{type,payload}) => {
     }
 
     case AUTH_SIGN_OUT:{
+      console.log("signout")
       localStorage.removeItem("userDetails")
       return{
         ...state,
